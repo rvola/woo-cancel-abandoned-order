@@ -1,0 +1,61 @@
+# Copyright (C) 2015 WP Original Media Path
+# This file is distributed under the same license as the WP Original Media Path package.
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: WooCommerce Cancel Abandonned Order - 1.0.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wp-original-media-"
+"path\n"
+"POT-Creation-Date: 2017-10-29 10:28+0100\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language-Team: \n"
+"X-Generator: Poedit 2.0.3\n"
+"X-Poedit-KeywordsList: __;_e;_n:1,2\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-Basepath: ..\n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: woocommerce-cancel-abandonned-order.php:91
+msgid "Donate"
+msgstr ""
+
+#: woocommerce-cancel-abandonned-order.php:192
+msgid "Cancellation of the order because payment not received at time."
+msgstr ""
+
+#: woocommerce-cancel-abandonned-order.php:213
+msgid "WooCommerce Cancel Abandonned Order"
+msgstr ""
+
+#: woocommerce-cancel-abandonned-order.php:219
+msgid "Enable/Disable"
+msgstr ""
+
+#: woocommerce-cancel-abandonned-order.php:221
+msgid "Activation the automatic cancellation of orders."
+msgstr ""
+
+#: woocommerce-cancel-abandonned-order.php:224
+msgid ""
+"Enable this option to automatically cancel all \"on Hold\" orders that you "
+"have not received payment for."
+msgstr ""
+
+#: woocommerce-cancel-abandonned-order.php:227
+msgid "Lifetime "
+msgstr ""
+
+#: woocommerce-cancel-abandonned-order.php:229
+msgid ""
+"Enter the number of days that the system must consider a \"on Hold\" order "
+"as canceled."
+msgstr ""
+
+#: woocommerce-cancel-abandonned-order.php:231
+msgid "days"
+msgstr ""
