@@ -1,7 +1,7 @@
 <?php
 /*
 Plugin Name:		    WooCommerce Cancel Abandonned Order
-Plugin URI:			    https://github.com/rvola/woocommerce-cancel-abandonned-order
+Plugin URI:			    https://github.com/rvola/woo-cancel-abandonned-order
 
 Description:		    Cancel "on hold" orders after a certain number of days
 
@@ -145,7 +145,7 @@ class WooCAO {
 					__( 'Donate', self::LANG )
 				),
 				sprintf(
-					'<a href="https://github.com/rvola/woocommerce-cancel-abandonned-order" target="_blank">GitHub</a>',
+					'<a href="https://github.com/rvola/woo-cancel-abandonned-order" target="_blank">GitHub</a>',
 					__( 'GitHub', self::LANG )
 				)
 			);
