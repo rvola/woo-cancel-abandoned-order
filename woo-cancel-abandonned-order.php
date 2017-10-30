@@ -1,12 +1,12 @@
 <?php
 /*
 Plugin Name:		    WooCommerce Cancel Abandonned Order
-Plugin URI:			    https://github.com/rvola/woocommerce-cancel-abandonned-order
+Plugin URI:			    https://github.com/rvola/woo-cancel-abandonned-order
 
 Description:		    Cancel "on hold" orders after a certain number of days
 
-Version:			    1.0.0
-Revision:			    2017-10-28
+Version:			    1.1.0
+Revision:			    2017-10-30
 Creation:               2017-10-28
 
 Author:				    studio RVOLA
@@ -60,39 +60,12 @@ class WooCAO {
 		if ( is_plugin_active( 'woocommerce/woocommerce.php' ) ) {
 
 			add_action( 'init', array( $this, 'loadLanguages' ), 10 );
-			add_filter( 'plugin_action_links_' . plugin_basename( __FILE__ ), array( $this, 'linkPluginPage' ), 10, 1 );
+			add_filter( 'plugin_row_meta', array( $this, 'pluginRowMeta' ), 10, 2 );
 			add_action( 'admin_print_styles', array( $this, 'style' ), 10 );
 			$this->addEventCron();
 			$this->addFieldGateways();
 
 		}
-	}
-
-	/**
-	 * Load language files
-	 */
-	public function loadLanguages() {
-
-		load_plugin_textdomain( self::LANG, false, dirname( __FILE__ ) . '/languages' );
-	}
-
-	/**
-	 * Add a donation link in the list of plugins
-	 * @param $links
-	 *
-	 * @return mixed
-	 */
-	public function linkPluginPage( $links ) {
-
-		array_unshift(
-			$links,
-			sprintf(
-				'\'<a href="https://www.paypal.me/rvola" target="_blank">%s</a>',
-				__( 'Donate', self::LANG )
-			)
-		);
-
-		return $links;
 	}
 
 	/**
@@ -146,6 +119,39 @@ class WooCAO {
 	public static function desactivation() {
 
 		wp_clear_scheduled_hook( self::CRON_EVENT );
+	}
+
+	/**
+	 * Load language files
+	 */
+	public function loadLanguages() {
+
+		load_plugin_textdomain( self::LANG, false, dirname( __FILE__ ) . '/languages' );
+	}
+
+	/**
+	 * Add links in the list of plugins
+	 * @param $links
+	 * @param $file
+	 *
+	 * @return mixed
+	 */
+	public function pluginRowMeta( $links, $file ) {
+		if ( $file === plugin_basename( __FILE__ ) ) {
+			array_push(
+				$links,
+				sprintf(
+					'<a href="https://www.paypal.me/rvola" target="_blank">%s</a>',
+					__( 'Donate', self::LANG )
+				),
+				sprintf(
+					'<a href="https://github.com/rvola/woo-cancel-abandonned-order" target="_blank">GitHub</a>',
+					__( 'GitHub', self::LANG )
+				)
+			);
+		}
+
+		return $links;
 	}
 
 	/**
