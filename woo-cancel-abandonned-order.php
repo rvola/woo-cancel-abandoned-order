@@ -12,7 +12,7 @@ Creation:               2017-10-28
 Author:				    studio RVOLA
 Author URI:			    https://www.rvola.com
 
-Text Domain:		    woo_ca_i18n
+Text Domain:		    woo-cancel-abandonned-order
 Domain Path:		    /languages
 
 Requires at least:      4.0
@@ -40,7 +40,7 @@ class WooCAO {
 	/**
 	 * Text Domain
 	 */
-	const LANG = 'woo_cao_i18n';
+	const LANG = 'woo-cancel-abandonned-order';
 
 	/**
 	 * @var singleton
