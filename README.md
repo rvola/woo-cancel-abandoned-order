@@ -1,11 +1,11 @@
-# WooCommerce Cancel Abandonned Order 
+# WooCommerce Cancel Abandoned Order 
 [![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.me/rvola)
 
 Cancel "on hold" orders after a certain number of days
 
 ## Description
 
-**WooCommerce Cancel Abandonned Order** allows you to add a small option that will take care of dealing with "abandoned" commands.
+**WooCommerce Cancel Abandoned Order** allows you to add a small option that will take care of dealing with "abandoned" commands.
 
 If you have check or transfer type orders for example, you will be able to set a maximum number of days to receive the payment.
 
@@ -15,7 +15,7 @@ WooCommerce Cancel Abandoned Order, will take care of checking this and change t
 
 This section describes how to install the plugin and get it working.
 
-1. Upload the plugin files to the `/wp-content/plugins/woo-cancel-abandonned-order` directory, or install the plugin through the WordPress plugins screen directly.
+1. Upload the plugin files to the `/wp-content/plugins/woo-cancel-abandoned-order` directory, or install the plugin through the WordPress plugins screen directly.
 1. Activate the plugin through the 'Plugins' screen in WordPress
 1. By default you can control the orders on the payment gateways: Check and BACS. Go to the options of the payment pages on WooCommerce.
 1. *To add another payment gateway, simply use the `woo_cao-gateways` filters*
@@ -38,5 +38,5 @@ Depending on the options on the payment gateway options page *(enabled or disabl
 
 ## Links
 
-* [**Changelog**](https://github.com/rvola/woo-cancel-abandonned-order/blob/master/CHANGELOG.md)
+* [**Changelog**](https://github.com/rvola/woo-cancel-abandoned-order/blob/master/CHANGELOG.md)
 * [**Download on WordPress**](https://wordpress.org/plugins/woo-cancel-abandoned-order/)

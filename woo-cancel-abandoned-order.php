@@ -1,18 +1,18 @@
 <?php
 /*
-Plugin Name:		    WooCommerce Cancel Abandonned Order
-Plugin URI:			    https://github.com/rvola/woo-cancel-abandonned-order
+Plugin Name:		    WooCommerce Cancel Abandoned Order
+Plugin URI:			    https://github.com/rvola/woo-cancel-abandoned-order
 
 Description:		    Cancel "on hold" orders after a certain number of days
 
-Version:			    1.1.1
+Version:			    1.1.2
 Revision:			    2017-10-30
 Creation:               2017-10-28
 
 Author:				    studio RVOLA
 Author URI:			    https://www.rvola.com
 
-Text Domain:		    woo-cancel-abandonned-order
+Text Domain:		    woo-cancel-abandoned-order
 Domain Path:		    /languages
 
 Requires at least:      4.0
@@ -40,7 +40,7 @@ class WooCAO {
 	/**
 	 * Text Domain
 	 */
-	const LANG = 'woo-cancel-abandonned-order';
+	const LANG = 'woo-cancel-abandoned-order';
 
 	/**
 	 * @var singleton
@@ -145,7 +145,7 @@ class WooCAO {
 					__( 'Donate', self::LANG )
 				),
 				sprintf(
-					'<a href="https://github.com/rvola/woo-cancel-abandonned-order" target="_blank">GitHub</a>',
+					'<a href="https://github.com/rvola/woo-cancel-abandoned-order" target="_blank">GitHub</a>',
 					__( 'GitHub', self::LANG )
 				)
 			);
@@ -216,7 +216,7 @@ class WooCAO {
 
 		$new_fields = array(
 			'woocao'         => array(
-				'title'       => __( 'WooCommerce Cancel Abandonned Order', self::LANG ),
+				'title'       => __( 'WooCommerce Cancel Abandoned Order', self::LANG ),
 				'type'        => 'title',
 				'description' => '',
 				'default'     => '',
