@@ -52,5 +52,10 @@ The GIT repository is available here [https://github.com/rvola/woo-cancel-abando
 
 == Changelog ==
 
+= 1.1.0 / 2017-10-30 =
+* Add extension licence files
+* Rename path plugin (WP)
+* Move additional link (plugin_row_meta)
+
 = 1.0.0 / 2017-10-29 =
 * Launch

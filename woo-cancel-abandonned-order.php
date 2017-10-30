@@ -5,8 +5,8 @@ Plugin URI:			    https://github.com/rvola/woo-cancel-abandonned-order
 
 Description:		    Cancel "on hold" orders after a certain number of days
 
-Version:			    1.0.0
-Revision:			    2017-10-28
+Version:			    1.1.0
+Revision:			    2017-10-30
 Creation:               2017-10-28
 
 Author:				    studio RVOLA
