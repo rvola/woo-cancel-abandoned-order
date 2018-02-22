@@ -77,7 +77,7 @@ class WooCAO {
 			'bacs',
 		);
 
-		$this->gateways = apply_filters( 'woo_cao-gateways', $gateways_default );
+		$this->gateways = apply_filters_deprecated( 'woo_cao-gateways', array( $gateways_default ), '1.2', 'woo_cao_gateways', 'It will be replaced on version 1.3' );
 		if ( $this->gateways && is_array( $this->gateways ) ) {
 			foreach ( $this->gateways as $gateway ) {
 				add_filter( 'woocommerce_settings_api_form_fields_' . $gateway, array( $this, 'add_fields' ), 10, 1 );
