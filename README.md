@@ -27,8 +27,11 @@ This section describes how to install the plugin and get it working.
 * WooCommerce minimal : **2.2.0**
 
 ## Hooks
-* `woo_cao-gateways`/ Adds a payment gateway for the control.
-* `woo_cao-default_days` / Default value of the number of days for order processing.
+* `woo_cao_gateways`/ Adds a payment gateway for the control.
+* `woo_cao_default_days` / Default value of the number of days for order processing.
+
+## Wiki
+* [A help section on the code is available here](https://github.com/rvola/woo-cancel-abandoned-order/wiki)
 
 ## Frequently Asked Questions
 
