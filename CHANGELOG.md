@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.2.0](https://github.com/rvola/woo-cancel-abandoned-order/tree/1.2.0) - 2018-02-22
+[Full Changelog](https://github.com/rvola/woo-cancel-abandoned-order/compare/1.1.3...1.2.0)
+
+* Deprecated hook `woo_cao-gateways` by `woo_cao_gateways`
+* Deprecated hook `woo_cao-default_days` by `woo_cao_default_days`
+* Wordpress conventions
+* Move Class in includes`
+
 ## [1.1.3](https://github.com/rvola/woo-cancel-abandoned-order/tree/1.1.3) - 2018-01-31
 [Full Changelog](https://github.com/rvola/woo-cancel-abandoned-order/compare/1.1.2...1.1.3)
 

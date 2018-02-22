@@ -5,7 +5,7 @@ Tags: woocommerce, cancel, order, pending, on hold, gateway
 Requires PHP: 5.3
 Requires at least: 4.0
 Tested up to: 4.9
-Stable tag: 1.1.3
+Stable tag: 1.2.0
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -37,8 +37,11 @@ This section describes how to install the plugin and get it working.
 * WooCommerce minimal : **2.2.0**
 
 == Hooks ==
-* `woo_cao-gateways`/ Adds a payment gateway for the control.
-* `woo_cao-default_days` / Default value of the number of days for order processing.
+* `woo_cao_gateways`/ Adds a payment gateway for the control.
+* `woo_cao_default_days` / Default value of the number of days for order processing.
+
+== Wiki ==
+* [A help section on the code is available here](https://github.com/rvola/woo-cancel-abandoned-order/wiki)
 
 == Frequently Asked Questions ==
 
@@ -51,6 +54,12 @@ We’re glad you want to help us improve **WooCommerce Cancel Abandoned Order**!
 The GIT repository is available here [https://github.com/rvola/woo-cancel-abandoned-order](https://github.com/rvola/woo-cancel-abandoned-order)
 
 == Changelog ==
+
+= 1.2.0 / 2018-02-22 =
+* Deprecated hook 'woo_cao-gateways' by 'woo_cao_gateways'
+* Deprecated hook 'woo_cao-default_days' by 'woo_cao_default_days'
+* Wordpress conventions
+* Move Class in includes
 
 = 1.1.3 / 2018-01-31 =
 * ✔︎ Compatibility WooCommerce 3.3.0
