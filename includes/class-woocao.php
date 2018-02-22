@@ -224,7 +224,7 @@ class WooCAO {
 				'title'       => __( 'Lifetime ', 'woo-cancel-abandoned-order' ),
 				'type'        => 'number',
 				'description' => __( 'Enter the number of days that the system must consider a "on Hold" order as canceled.', 'woo-cancel-abandoned-order' ),
-				'default'     => apply_filters( 'woo_cao-default_days', 15 ),
+				'default'     => apply_filters_deprecated( 'woo_cao-default_days', array( '15' ), '1.2', 'woo_cao_default_days', 'It will be replaced on version 1.3' ),
 				'placeholder' => __( 'days', 'woo-cancel-abandoned-order' ),
 				'class'       => 'woo_cao-field-days',
 			),
