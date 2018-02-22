@@ -37,7 +37,7 @@ This section describes how to install the plugin and get it working.
 * WooCommerce minimal : **2.2.0**
 
 == Hooks ==
-* `woo_cao_gateways`/ Adds a payment gateway for the control.
+* `woo_cao_gateways` / Adds a payment gateway for the control.
 * `woo_cao_default_days` / Default value of the number of days for order processing.
 
 == Wiki ==
