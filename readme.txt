@@ -26,9 +26,10 @@ WooCommerce Cancel Abandoned Order, will take care of checking this and change t
 This section describes how to install the plugin and get it working.
 
 1. Upload the plugin files to the `/wp-content/plugins/woo-cancel-abandoned-order` directory, or install the plugin through the WordPress plugins screen directly.
-1. Activate the plugin through the 'Plugins' screen in WordPress
-1. By default you can control the orders on the payment gateways: Check and BACS. Go to the options of the payment pages on WooCommerce.
-1. *To add another payment gateway, simply use the `woo_cao-gateways` filters*
+2. Activate the plugin through the 'Plugins' screen in WordPress
+3. By default you can control the orders on the payment gateways: Check and BACS. Go to the options of the payment pages on WooCommerce.
+* *To add another payment gateway, simply use the `woo_cao_gateways` filters*
+* [See the help here](https://github.com/rvola/woo-cancel-abandoned-order/wiki)
 
 == Requirement ==
 
