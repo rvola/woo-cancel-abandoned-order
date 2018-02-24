@@ -56,6 +56,13 @@ The GIT repository is available here [https://github.com/rvola/woo-cancel-abando
 
 == Changelog ==
 
+= 1.2.1 / 2018-02-24 =
+* Rename class + namespace
+* Update change methode ‘load’ > ‘intance'
+* FIX / plugin_row_meta (class in includes)
+* MINOR / delete link github plugin_row_meta
+* MINOR / update readme
+
 = 1.2.0 / 2018-02-22 =
 * Deprecated hook 'woo_cao-gateways' by 'woo_cao_gateways'
 * Deprecated hook 'woo_cao-default_days' by 'woo_cao_default_days'
