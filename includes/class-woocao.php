@@ -125,7 +125,7 @@ class WooCAO {
 	 * @return mixed
 	 */
 	public function plugin_row_meta( $plugin_meta, $plugin_file ) {
-		if ( plugin_basename( __FILE__ ) === $plugin_file ) {
+		if ( plugin_basename( 'woo-cancel-abandoned-order/woo-cancel-abandoned-order.php' ) === $plugin_file ) {
 			array_push(
 				$plugin_meta,
 				sprintf(
