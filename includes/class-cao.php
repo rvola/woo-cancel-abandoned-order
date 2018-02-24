@@ -2,21 +2,21 @@
 /**
  * Main class of the plugin
  *
- * @package RVOLA
+ * @package RVOLA\WOO
  **/
 
-namespace RVOLA;
+namespace RVOLA\WOO;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
 /**
- * Class WooCAO
+ * Class CAO
  *
- * @package RVOLA
+ * @package RVOLA\WOO
  */
-class WooCAO {
+class CAO {
 
 	/**
 	 * Cron event name.
