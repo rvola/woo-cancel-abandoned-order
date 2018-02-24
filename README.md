@@ -1,7 +1,9 @@
 # WooCommerce Cancel Abandoned Order 
 [![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.me/rvola)
 
-Cancel "on hold" orders after a certain number of days
+Cancel "on hold" orders after a certain number of days.
+
+![banner](/.github/banner.jpg)
 
 ## Description
 

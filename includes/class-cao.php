@@ -2,21 +2,21 @@
 /**
  * Main class of the plugin
  *
- * @package RVOLA
+ * @package RVOLA\WOO
  **/
 
-namespace RVOLA;
+namespace RVOLA\WOO;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
 /**
- * Class WooCAO
+ * Class CAO
  *
- * @package RVOLA
+ * @package RVOLA\WOO
  */
-class WooCAO {
+class CAO {
 
 	/**
 	 * Cron event name.
@@ -28,7 +28,7 @@ class WooCAO {
 	 *
 	 * @var singleton.
 	 */
-	private static $singleton = null;
+	private static $_singleton = null;
 	/**
 	 * Storage in the class of gateways
 	 *
@@ -90,14 +90,14 @@ class WooCAO {
 	 *
 	 * @return mixed
 	 */
-	public static function load() {
+	public static function instance() {
 
-		if ( is_null( self::$singleton ) ) {
-			$class           = __CLASS__;
-			self::$singleton = new $class();
+		if ( is_null( self::$_singleton ) ) {
+			$class            = __CLASS__;
+			self::$_singleton = new $class();
 		}
 
-		return self::$singleton;
+		return self::$_singleton;
 	}
 
 	/**
@@ -125,16 +125,12 @@ class WooCAO {
 	 * @return mixed
 	 */
 	public function plugin_row_meta( $plugin_meta, $plugin_file ) {
-		if ( plugin_basename( __FILE__ ) === $plugin_file ) {
+		if ( plugin_basename( 'woo-cancel-abandoned-order/woo-cancel-abandoned-order.php' ) === $plugin_file ) {
 			array_push(
 				$plugin_meta,
 				sprintf(
 					'<a href="https://www.paypal.me/rvola" target="_blank">%s</a>',
 					__( 'Donate', 'woo-cancel-abandoned-order' )
-				),
-				sprintf(
-					'<a href="https://github.com/rvola/woo-cancel-abandoned-order" target="_blank">GitHub</a>',
-					__( 'GitHub', 'woo-cancel-abandoned-order' )
 				)
 			);
 		}
