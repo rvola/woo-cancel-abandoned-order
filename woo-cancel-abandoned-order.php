@@ -33,5 +33,5 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 require_once dirname( __FILE__ ) . '/includes/class-woocao.php';
 
-add_action( 'wp_loaded', array( 'RVOLA\WooCAO', 'load' ), 10 );
 register_deactivation_hook( __FILE__, array( 'RVOLA\WooCAO', 'desactivation' ) );
+add_action( 'wp_loaded', array( 'RVOLA\WooCAO', 'instance' ), 10 );

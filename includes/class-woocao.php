@@ -28,7 +28,7 @@ class WooCAO {
 	 *
 	 * @var singleton.
 	 */
-	private static $singleton = null;
+	private static $_singleton = null;
 	/**
 	 * Storage in the class of gateways
 	 *
@@ -90,14 +90,14 @@ class WooCAO {
 	 *
 	 * @return mixed
 	 */
-	public static function load() {
+	public static function instance() {
 
-		if ( is_null( self::$singleton ) ) {
-			$class           = __CLASS__;
-			self::$singleton = new $class();
+		if ( is_null( self::$_singleton ) ) {
+			$class            = __CLASS__;
+			self::$_singleton = new $class();
 		}
 
-		return self::$singleton;
+		return self::$_singleton;
 	}
 
 	/**
