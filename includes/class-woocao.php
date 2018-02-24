@@ -131,10 +131,6 @@ class WooCAO {
 				sprintf(
 					'<a href="https://www.paypal.me/rvola" target="_blank">%s</a>',
 					__( 'Donate', 'woo-cancel-abandoned-order' )
-				),
-				sprintf(
-					'<a href="https://github.com/rvola/woo-cancel-abandoned-order" target="_blank">GitHub</a>',
-					__( 'GitHub', 'woo-cancel-abandoned-order' )
 				)
 			);
 		}
