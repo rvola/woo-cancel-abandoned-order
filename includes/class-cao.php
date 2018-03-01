@@ -65,7 +65,7 @@ class CAO {
 			'bacs',
 		);
 
-		$this->gateways = apply_filters_deprecated( 'woo_cao-gateways', array( $gateways_default ), '1.2', 'woo_cao_gateways', 'It will be replaced on version 1.3' );
+		$this->gateways = apply_filters( 'woo_cao_gateways', $gateways_default );
 		if ( $this->gateways && is_array( $this->gateways ) ) {
 			foreach ( $this->gateways as $gateway ) {
 				add_filter( 'woocommerce_settings_api_form_fields_' . $gateway, array( $this, 'add_fields' ), 10, 1 );
@@ -163,7 +163,7 @@ class CAO {
 				'title'       => __( 'Lifetime ', 'woo-cancel-abandoned-order' ),
 				'type'        => 'number',
 				'description' => __( 'Enter the number of days that the system must consider a "on Hold" order as canceled.', 'woo-cancel-abandoned-order' ),
-				'default'     => apply_filters_deprecated( 'woo_cao-default_days', array( '15' ), '1.2', 'woo_cao_default_days', 'It will be replaced on version 1.3' ),
+				'default'     => apply_filters( 'woo_cao_default_days', '15' ),
 				'placeholder' => __( 'days', 'woo-cancel-abandoned-order' ),
 				'class'       => 'woo_cao-field-days',
 			),
