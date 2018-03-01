@@ -2,10 +2,10 @@
 /**
  * Main class of the plugin
  *
- * @package RVOLA\WOO
+ * @package RVOLA\WOO\CAO
  **/
 
-namespace RVOLA\WOO;
+namespace RVOLA\WOO\CAO;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -14,7 +14,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * Class CAO
  *
- * @package RVOLA\WOO
+ * @package RVOLA\WOO\CAO
  */
 class CAO {
 
@@ -24,12 +24,6 @@ class CAO {
 	const CRON_EVENT = 'woo_cao_cron';
 
 	/**
-	 * Singleton
-	 *
-	 * @var singleton.
-	 */
-	private static $_singleton = null;
-	/**
 	 * Storage in the class of gateways
 	 *
 	 * @var gateways.
@@ -37,33 +31,13 @@ class CAO {
 	private $gateways;
 
 	/**
-	 * WooCAO constructor.
+	 * CAO constructor.
 	 */
 	public function __construct() {
+		add_action( 'admin_print_styles', array( $this, 'style' ), 10 );
+		$this->add_field_gateways();
+		$this->add_event_cron();
 
-		include_once ABSPATH . 'wp-admin/includes/plugin.php';
-		if ( is_plugin_active( 'woocommerce/woocommerce.php' ) ) {
-
-			add_action( 'init', array( $this, 'load_languages' ), 10 );
-			add_filter( 'plugin_row_meta', array( $this, 'plugin_row_meta' ), 10, 2 );
-			add_action( 'admin_print_styles', array( $this, 'style' ), 10 );
-			$this->add_event_cron();
-			$this->add_field_gateways();
-
-		}
-	}
-
-	/**
-	 * Add the spot in the WordPress cron.
-	 */
-	private function add_event_cron() {
-
-		if ( ! wp_next_scheduled( self::CRON_EVENT ) ) {
-			wp_schedule_event(
-				strtotime( 'yesterday 0 hours' ), 'daily', self::CRON_EVENT
-			);
-		}
-		add_action( self::CRON_EVENT, array( $this, 'cancel_order' ), 10 );
 	}
 
 	/**
@@ -77,7 +51,7 @@ class CAO {
 			'bacs',
 		);
 
-		$this->gateways = apply_filters_deprecated( 'woo_cao-gateways', array( $gateways_default ), '1.2', 'woo_cao_gateways', 'It will be replaced on version 1.3' );
+		$this->gateways = apply_filters( 'woo_cao_gateways', $gateways_default );
 		if ( $this->gateways && is_array( $this->gateways ) ) {
 			foreach ( $this->gateways as $gateway ) {
 				add_filter( 'woocommerce_settings_api_form_fields_' . $gateway, array( $this, 'add_fields' ), 10, 1 );
@@ -86,63 +60,31 @@ class CAO {
 	}
 
 	/**
-	 * Singleton.
-	 *
-	 * @return mixed
+	 * Add the spot in the WordPress cron.
 	 */
-	public static function instance() {
+	private function add_event_cron() {
 
-		if ( is_null( self::$_singleton ) ) {
-			$class            = __CLASS__;
-			self::$_singleton = new $class();
+		if ( ! wp_next_scheduled( self::CRON_EVENT ) ) {
+			wp_schedule_event(
+				strtotime( 'yesterday 0 hours' ), 'daily', self::CRON_EVENT
+			);
 		}
-
-		return self::$_singleton;
+		add_action( self::CRON_EVENT, array( $this, 'check_order' ), 10 );
 	}
 
 	/**
 	 * Use when the extension is disabled to clean the cron spot.
 	 */
-	public static function desactivation() {
+	public static function clean_cron() {
 
 		wp_clear_scheduled_hook( self::CRON_EVENT );
-	}
-
-	/**
-	 * Load language files.
-	 */
-	public function load_languages() {
-
-		load_plugin_textdomain( 'woo-cancel-abandoned-order', false, dirname( __FILE__ ) . '/languages' );
-	}
-
-	/**
-	 * Add links in the list of plugins.
-	 *
-	 * @param array  $plugin_meta An array of the plugin's metadata, including the version, author, author URI, and plugin URI.
-	 * @param string $plugin_file Path to the plugin file, relative to the plugins directory.
-	 *
-	 * @return mixed
-	 */
-	public function plugin_row_meta( $plugin_meta, $plugin_file ) {
-		if ( plugin_basename( 'woo-cancel-abandoned-order/woo-cancel-abandoned-order.php' ) === $plugin_file ) {
-			array_push(
-				$plugin_meta,
-				sprintf(
-					'<a href="https://www.paypal.me/rvola" target="_blank">%s</a>',
-					__( 'Donate', 'woo-cancel-abandoned-order' )
-				)
-			);
-		}
-
-		return $plugin_meta;
 	}
 
 	/**
 	 * Main method that tracks options and orders pending payment.
 	 * If the elements match (activation for the gateway, lifetime, command on hold), the system will cancel the command if it exceeds its time.
 	 */
-	public function cancel_order() {
+	public function check_order() {
 
 		global $wpdb;
 
@@ -156,11 +98,12 @@ class CAO {
 					&& isset( $options['woocao_days'] )
 					&& ! empty( $options['woocao_days'] )
 				) {
+					$restock = isset( $options['woocao_restock'] ) && 'yes' === $options['woocao_restock'] ? 'yes' : 'no';
 
 					$old_date        = strtotime( 'today -' . $options['woocao_days'] . ' days' );
 					$old_date_format = date( 'Y-m-d 00:00:00', $old_date );
 
-					$orders_id = $wpdb->get_results(
+					$orders = $wpdb->get_results(
 						$wpdb->prepare(
 							"
 							SELECT posts.ID
@@ -177,17 +120,62 @@ class CAO {
 							$gateway
 						)
 					);
-					if ( $orders_id ) {
-						foreach ( $orders_id as $order_id ) {
-							$order = new \WC_Order( $order_id->ID );
-							$order->update_status(
-								'cancelled',
-								__( 'Cancellation of the order because payment not received at time.', 'woo-cancel-abandoned-order' )
-							);
+					if ( $orders ) {
+						foreach ( $orders as $order ) {
+							// Cancel order.
+							$this->cancel_order( $order->ID );
+
+							// Restock product.
+							if ( 'yes' === $restock ) {
+								$this->restock( $order->ID );
+							}
 						}
 						wp_cache_flush();
 					}
 				}
+			}
+		}
+	}
+
+	/**
+	 * Cancel the order.
+	 *
+	 * @param int $order_id order ID.
+	 */
+	private function cancel_order( $order_id ) {
+		$order = new \WC_Order( $order_id );
+
+		$order->update_status(
+			'cancelled',
+			__( 'Cancellation of the order because payment not received at time.', 'woo-cancel-abandoned-order' )
+		);
+		do_action( 'woo_cao_cancel_order', $order_id );
+
+	}
+
+	/**
+	 * Will check and store the products of the canceled order.
+	 *
+	 * @param int $order_id order ID.
+	 */
+	private function restock( $order_id ) {
+
+		$order = new \WC_Order( $order_id );
+
+		$line_items = $order->get_items();
+
+		foreach ( $line_items as $item_id => $item ) {
+
+			$item_data = $item->get_data();
+			$product   = $item->get_product();
+
+			if ( $product && $product->managing_stock() ) {
+				$old_stock = $product->get_stock_quantity();
+				$new_stock = wc_update_product_stock( $product, $item_data['quantity'], 'increase' );
+
+				// translators: %1$s is name of product, %2$s is initial stock, %3$s is new stock after cancel order.
+				$order->add_order_note( sprintf( _x( '%1$s stock increased from %2$s to %3$s.', '%1$s is name of product, %2$s is initial stock, %3$s is new stock after cancel order', 'woo-cancel-abandoned-order' ), $product->get_name(), $old_stock, $new_stock ) );
+				do_action( 'woo_cao_restock_item', $product->get_id(), $old_stock, $new_stock, $order, $product );
 			}
 		}
 	}
@@ -220,11 +208,21 @@ class CAO {
 				'title'       => __( 'Lifetime ', 'woo-cancel-abandoned-order' ),
 				'type'        => 'number',
 				'description' => __( 'Enter the number of days that the system must consider a "on Hold" order as canceled.', 'woo-cancel-abandoned-order' ),
-				'default'     => apply_filters_deprecated( 'woo_cao-default_days', array( '15' ), '1.2', 'woo_cao_default_days', 'It will be replaced on version 1.3' ),
+				'default'     => apply_filters( 'woo_cao_default_days', '15' ),
 				'placeholder' => __( 'days', 'woo-cancel-abandoned-order' ),
 				'class'       => 'woo_cao-field-days',
 			),
 		);
+
+		if ( 'yes' === get_option( 'woocommerce_manage_stock' ) ) {
+			$new_fields['woocao_restock'] = array(
+				'title'       => __( 'Restock', 'woo-cancel-abandoned-order' ),
+				'type'        => 'checkbox',
+				'label'       => __( 'Activate to restock products in abandoned orders.', 'woo-cancel-abandoned-order' ),
+				'default'     => 'no',
+				'description' => __( 'If enable, each product contained in orders canceled by the system, will be restocked in your products.', 'woo-cancel-abandoned-order' ),
+			);
+		}
 
 		return array_merge( $fields, $new_fields );
 

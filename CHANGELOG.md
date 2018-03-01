@@ -1,5 +1,18 @@
 # Changelog
 
+## [1.3.0](https://github.com/rvola/woo-cancel-abandoned-order/tree/1.3.0) - 2018-03-01
+[Full Changelog](https://github.com/rvola/woo-cancel-abandoned-order/compare/1.2.1...1.3.0)
+
+* NEW restock
+* NEW hook do_action ‘woo_cao_cancel_order’
+* NEW method ‘cancel_order’
+* Rename var ‘orders_id’ by’ ‘orders’
+* Rename method ‘cancel_order’ by ‘check_order’
+* Delete notice deprecated hook
+* Refactor class
+* Refactor new instance
+* Changelog WP
+
 ## [1.2.1](https://github.com/rvola/woo-cancel-abandoned-order/tree/1.2.1) - 2018-02-24
 [Full Changelog](https://github.com/rvola/woo-cancel-abandoned-order/compare/1.2.0...1.2.1)
 
