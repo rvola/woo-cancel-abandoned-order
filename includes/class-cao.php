@@ -122,11 +122,8 @@ class CAO {
 					);
 					if ( $orders ) {
 						foreach ( $orders as $order ) {
-							$order = new \WC_Order( $order->ID );
-							$order->update_status(
-								'cancelled',
-								__( 'Cancellation of the order because payment not received at time.', 'woo-cancel-abandoned-order' )
-							);
+							// Cancel order.
+							$this->cancel_order( $order->ID );
 						}
 						wp_cache_flush();
 					}
@@ -134,7 +131,20 @@ class CAO {
 			}
 		}
 	}
+	/**
+	 * Cancel the order.
+	 *
+	 * @param int $order_id order ID.
+	 */
+	private function cancel_order( $order_id ) {
+		$order = new \WC_Order( $order_id );
 
+		$order->update_status(
+			'cancelled',
+			__( 'Cancellation of the order because payment not received at time.', 'woo-cancel-abandoned-order' )
+		);
+
+	}
 	/**
 	 * Adds fields for gateways.
 	 * Hook available: 'woo_cao-default_days' / Default value of the number of days for order processing.
