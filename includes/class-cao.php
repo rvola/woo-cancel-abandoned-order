@@ -99,6 +99,7 @@ class CAO {
 					&& isset( $options['woocao_days'] )
 					&& ! empty( $options['woocao_days'] )
 				) {
+					$restock = isset( $options['woocao_restock'] ) && 'yes' === $options['woocao_restock'] ? 'yes' : 'no';
 
 					$old_date        = strtotime( 'today -' . $options['woocao_days'] . ' days' );
 					$old_date_format = date( 'Y-m-d 00:00:00', $old_date );
@@ -124,6 +125,11 @@ class CAO {
 						foreach ( $orders as $order ) {
 							// Cancel order.
 							$this->cancel_order( $order->ID );
+
+							// Restock product.
+							if ( 'yes' === $restock ) {
+								$this->restock( $order->ID );
+							}
 						}
 						wp_cache_flush();
 					}
@@ -131,6 +137,7 @@ class CAO {
 			}
 		}
 	}
+
 	/**
 	 * Cancel the order.
 	 *
@@ -146,6 +153,34 @@ class CAO {
 		do_action( 'woo_cao_cancel_order', $order_id );
 
 	}
+
+	/**
+	 * Will check and store the products of the canceled order.
+	 *
+	 * @param int $order_id order ID.
+	 */
+	private function restock( $order_id ) {
+
+		$order = new \WC_Order( $order_id );
+
+		$line_items = $order->get_items();
+
+		foreach ( $line_items as $item_id => $item ) {
+
+			$item_data = $item->get_data();
+			$product   = $item->get_product();
+
+			if ( $product && $product->managing_stock() ) {
+				$old_stock = $product->get_stock_quantity();
+				$new_stock = wc_update_product_stock( $product, $item_data['quantity'], 'increase' );
+
+				// translators: %1$s is name of product, %2$s is initial stock, %3$s is new stock after cancel order.
+				$order->add_order_note( sprintf( _x( '%1$s stock increased from %2$s to %3$s.', '%1$s is name of product, %2$s is initial stock, %3$s is new stock after cancel order', 'woo-cancel-abandoned-order' ), $product->get_name(), $old_stock, $new_stock ) );
+				do_action( 'woo_cao_restock_item', $product->get_id(), $old_stock, $new_stock, $order, $product );
+			}
+		}
+	}
+
 	/**
 	 * Adds fields for gateways.
 	 * Hook available: 'woo_cao-default_days' / Default value of the number of days for order processing.
@@ -179,6 +214,16 @@ class CAO {
 				'class'       => 'woo_cao-field-days',
 			),
 		);
+
+		if ( 'yes' === get_option( 'woocommerce_manage_stock' ) ) {
+			$new_fields['woocao_restock'] = array(
+				'title'       => __( 'Restock', 'woo-cancel-abandoned-order' ),
+				'type'        => 'checkbox',
+				'label'       => __( 'Activate to restock products in abandoned orders.', 'woo-cancel-abandoned-order' ),
+				'default'     => 'no',
+				'description' => __( 'If enable, each product contained in orders canceled by the system, will be restocked in your products.', 'woo-cancel-abandoned-order' ),
+			);
+		}
 
 		return array_merge( $fields, $new_fields );
 
