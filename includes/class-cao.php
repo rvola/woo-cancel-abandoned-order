@@ -143,6 +143,7 @@ class CAO {
 			'cancelled',
 			__( 'Cancellation of the order because payment not received at time.', 'woo-cancel-abandoned-order' )
 		);
+		do_action( 'woo_cao_cancel_order', $order_id );
 
 	}
 	/**
