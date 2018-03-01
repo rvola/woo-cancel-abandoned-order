@@ -25,13 +25,20 @@ License:                GNU General Public License v3.0
 License URI:            https://www.gnu.org/licenses/gpl-3.0.html
 */
 
-namespace RVOLA\WOO;
+namespace RVOLA\WOO\CAO;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-require_once dirname( __FILE__ ) . '/includes/class-cao.php';
+define( 'WOOCAO_FILE', __FILE__ );
 
-add_action( 'wp_loaded', array( 'RVOLA\WOO\CAO', 'instance' ), 10 );
-register_deactivation_hook( __FILE__, array( 'RVOLA\WOO\CAO', 'desactivation' ) );
+include_once ABSPATH . 'wp-admin/includes/plugin.php';
+if ( is_plugin_active( 'woocommerce/woocommerce.php' ) ) {
+
+	require_once dirname( WOOCAO_FILE ) . '/includes/class-wp.php';
+	add_action( 'wp_loaded', array( __NAMESPACE__ . '\\WP', 'instance' ), 10 );
+
+	register_deactivation_hook( WOOCAO_FILE, array( __NAMESPACE__ . '\\CAO', 'clean_cron' ) );
+}
+

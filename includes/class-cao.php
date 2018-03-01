@@ -2,10 +2,10 @@
 /**
  * Main class of the plugin
  *
- * @package RVOLA\WOO
+ * @package RVOLA\WOO\CAO
  **/
 
-namespace RVOLA\WOO;
+namespace RVOLA\WOO\CAO;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -14,7 +14,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * Class CAO
  *
- * @package RVOLA\WOO
+ * @package RVOLA\WOO\CAO
  */
 class CAO {
 
@@ -24,12 +24,6 @@ class CAO {
 	const CRON_EVENT = 'woo_cao_cron';
 
 	/**
-	 * Singleton
-	 *
-	 * @var singleton.
-	 */
-	private static $_singleton = null;
-	/**
 	 * Storage in the class of gateways
 	 *
 	 * @var gateways.
@@ -37,20 +31,14 @@ class CAO {
 	private $gateways;
 
 	/**
-	 * WooCAO constructor.
+	 * CAO constructor.
 	 */
 	public function __construct() {
 
-		include_once ABSPATH . 'wp-admin/includes/plugin.php';
-		if ( is_plugin_active( 'woocommerce/woocommerce.php' ) ) {
+		add_action( 'admin_print_styles', array( $this, 'style' ), 10 );
+		$this->add_event_cron();
+		$this->add_field_gateways();
 
-			add_action( 'init', array( $this, 'load_languages' ), 10 );
-			add_filter( 'plugin_row_meta', array( $this, 'plugin_row_meta' ), 10, 2 );
-			add_action( 'admin_print_styles', array( $this, 'style' ), 10 );
-			$this->add_event_cron();
-			$this->add_field_gateways();
-
-		}
 	}
 
 	/**
@@ -86,55 +74,11 @@ class CAO {
 	}
 
 	/**
-	 * Singleton.
-	 *
-	 * @return mixed
-	 */
-	public static function instance() {
-
-		if ( is_null( self::$_singleton ) ) {
-			self::$_singleton = new self();
-		}
-
-		return self::$_singleton;
-	}
-
-	/**
 	 * Use when the extension is disabled to clean the cron spot.
 	 */
-	public static function desactivation() {
+	public static function clean_cron() {
 
 		wp_clear_scheduled_hook( self::CRON_EVENT );
-	}
-
-	/**
-	 * Load language files.
-	 */
-	public function load_languages() {
-
-		load_plugin_textdomain( 'woo-cancel-abandoned-order', false, dirname( __FILE__ ) . '/languages' );
-	}
-
-	/**
-	 * Add links in the list of plugins.
-	 *
-	 * @param array  $plugin_meta An array of the plugin's metadata, including the version, author, author URI, and plugin URI.
-	 * @param string $plugin_file Path to the plugin file, relative to the plugins directory.
-	 *
-	 * @return mixed
-	 */
-	public function plugin_row_meta( $plugin_meta, $plugin_file ) {
-		if ( plugin_basename( 'woo-cancel-abandoned-order/woo-cancel-abandoned-order.php' ) === $plugin_file ) {
-			array_push(
-				$plugin_meta,
-				sprintf(
-					'<a href="https://www.paypal.me/rvola" target="_blank">%s</a>',
-					__( 'Donate', 'woo-cancel-abandoned-order' )
-				)
-			);
-		}
-
-		return $plugin_meta;
 	}
 
 	/**
