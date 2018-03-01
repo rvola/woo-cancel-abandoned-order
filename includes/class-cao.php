@@ -42,19 +42,6 @@ class CAO {
 	}
 
 	/**
-	 * Add the spot in the WordPress cron.
-	 */
-	private function add_event_cron() {
-
-		if ( ! wp_next_scheduled( self::CRON_EVENT ) ) {
-			wp_schedule_event(
-				strtotime( 'yesterday 0 hours' ), 'daily', self::CRON_EVENT
-			);
-		}
-		add_action( self::CRON_EVENT, array( $this, 'cancel_order' ), 10 );
-	}
-
-	/**
 	 * Adds control fields in the gateway.
 	 * Hook available: 'woo_cao-gateways' / Adds a payment gateway for the control.
 	 */
@@ -74,6 +61,19 @@ class CAO {
 	}
 
 	/**
+	 * Add the spot in the WordPress cron.
+	 */
+	private function add_event_cron() {
+
+		if ( ! wp_next_scheduled( self::CRON_EVENT ) ) {
+			wp_schedule_event(
+				strtotime( 'yesterday 0 hours' ), 'daily', self::CRON_EVENT
+			);
+		}
+		add_action( self::CRON_EVENT, array( $this, 'check_order' ), 10 );
+	}
+
+	/**
 	 * Use when the extension is disabled to clean the cron spot.
 	 */
 	public static function clean_cron() {
@@ -85,7 +85,7 @@ class CAO {
 	 * Main method that tracks options and orders pending payment.
 	 * If the elements match (activation for the gateway, lifetime, command on hold), the system will cancel the command if it exceeds its time.
 	 */
-	public function cancel_order() {
+	public function check_order() {
 
 		global $wpdb;
 
