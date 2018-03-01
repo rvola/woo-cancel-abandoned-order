@@ -41,10 +41,12 @@ This section describes how to install the plugin and get it working.
 
 == Hooks ==
 _Action_
+
 * `woo_cao_cancel_order` ($order_id) / After cancel order.
 * `woo_cao_restock_item` ($product_id, $old_stock, $new_stock, $order, $product ) / After restock product.
 
 _Filters_
+
 * `woo_cao_gateways` / Adds a payment gateway for the control.
 * `woo_cao_default_days` / Default value of the number of days for order processing.
 
