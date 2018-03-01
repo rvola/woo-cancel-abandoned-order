@@ -103,7 +103,7 @@ class CAO {
 					$old_date        = strtotime( 'today -' . $options['woocao_days'] . ' days' );
 					$old_date_format = date( 'Y-m-d 00:00:00', $old_date );
 
-					$orders_id = $wpdb->get_results(
+					$orders = $wpdb->get_results(
 						$wpdb->prepare(
 							"
 							SELECT posts.ID
@@ -120,9 +120,9 @@ class CAO {
 							$gateway
 						)
 					);
-					if ( $orders_id ) {
-						foreach ( $orders_id as $order_id ) {
-							$order = new \WC_Order( $order_id->ID );
+					if ( $orders ) {
+						foreach ( $orders as $order ) {
+							$order = new \WC_Order( $order->ID );
 							$order->update_status(
 								'cancelled',
 								__( 'Cancellation of the order because payment not received at time.', 'woo-cancel-abandoned-order' )
