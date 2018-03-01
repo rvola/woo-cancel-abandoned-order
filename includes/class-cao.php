@@ -34,10 +34,9 @@ class CAO {
 	 * CAO constructor.
 	 */
 	public function __construct() {
-
 		add_action( 'admin_print_styles', array( $this, 'style' ), 10 );
-		$this->add_event_cron();
 		$this->add_field_gateways();
+		$this->add_event_cron();
 
 	}
 
