@@ -93,8 +93,7 @@ class CAO {
 	public static function instance() {
 
 		if ( is_null( self::$_singleton ) ) {
-			$class            = __CLASS__;
-			self::$_singleton = new $class();
+			self::$_singleton = new self();
 		}
 
 		return self::$_singleton;
