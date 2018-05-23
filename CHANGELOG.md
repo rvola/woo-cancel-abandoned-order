@@ -1,5 +1,10 @@
 # Changelog
 
+## [1.3.1](https://github.com/rvola/woo-cancel-abandoned-order/tree/1.3.1) - 2018-05-23
+[Full Changelog](https://github.com/rvola/woo-cancel-abandoned-order/compare/1.3.0...1.3.1)
+
+* ✔︎ Compatibility WooCommerce 3.4.0
+
 ## [1.3.0](https://github.com/rvola/woo-cancel-abandoned-order/tree/1.3.0) - 2018-03-01
 [Full Changelog](https://github.com/rvola/woo-cancel-abandoned-order/compare/1.2.1...1.3.0)
 

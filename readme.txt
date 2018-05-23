@@ -5,7 +5,7 @@ Tags: woocommerce, cancel, order, pending, on hold, gateway
 Requires PHP: 5.3
 Requires at least: 4.0
 Tested up to: 4.9
-Stable tag: 1.3.0
+Stable tag: 1.3.1
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -69,6 +69,9 @@ We’re glad you want to help us improve **WooCommerce Cancel Abandoned Order**!
 The GIT repository is available here [https://github.com/rvola/woo-cancel-abandoned-order](https://github.com/rvola/woo-cancel-abandoned-order)
 
 == Changelog ==
+
+= 1.3.1 / 2018-05-23 =
+* ✔︎ Compatibility WooCommerce 3.4.0
 
 = 1.3.0 / 2018-03-01 =
 * NEW restock
