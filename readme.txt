@@ -5,7 +5,7 @@ Tags: woocommerce, cancel, order, pending, on hold, gateway
 Requires PHP: 5.3
 Requires at least: 4.0
 Tested up to: 4.9
-Stable tag: 1.3.1
+Stable tag: 1.3.2
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 

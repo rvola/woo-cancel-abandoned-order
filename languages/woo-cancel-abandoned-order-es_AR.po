@@ -1,0 +1,97 @@
+# Translation of Plugins - WooCommerce Cancel Abandoned Order - Development (trunk) in Spanish (Argentina)
+# This file is distributed under the same license as the Plugins - WooCommerce Cancel Abandoned Order - Development (trunk) package.
+msgid ""
+msgstr ""
+"Project-Id-Version: Plugins - WooCommerce Cancel Abandoned Order - "
+"Development (trunk)\n"
+"POT-Creation-Date: 2018-05-24 17:02+0200\n"
+"PO-Revision-Date: 2018-05-24 17:12+0200\n"
+"Language-Team: glew\n"
+"Language: es_AR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Poedit 2.0.6\n"
+"X-Poedit-KeywordsList: __;_e\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: includes/class-cao.php:150
+msgid "Cancellation of the order because payment not received at time."
+msgstr "Cancelación del pedido porque el pago no se recibió en el momento."
+
+#: includes/class-cao.php:195
+msgid "WooCommerce Cancel Abandoned Order"
+msgstr "WooCommerce Cancela ordenes abandonadas"
+
+#: includes/class-cao.php:201
+msgid "Enable/Disable"
+msgstr "Habilitar/Deshabilitar"
+
+#: includes/class-cao.php:203
+msgid "Activation the automatic cancellation of orders."
+msgstr "Activación de la cancelación automática de pedidos."
+
+#: includes/class-cao.php:205
+msgid ""
+"Enable this option to automatically cancel all \"on Hold\" orders that you "
+"have not received payment for."
+msgstr ""
+"Active esta opción para cancelar automáticamente todas las órdenes \"en "
+"espera\" para las que no haya recibido el pago."
+
+#: includes/class-cao.php:208
+msgid "Lifetime "
+msgstr "Por siempre "
+
+#: includes/class-cao.php:210
+msgid ""
+"Enter the number of days that the system must consider a \"on Hold\" order "
+"as canceled."
+msgstr ""
+"Ingrese el número de días que el sistema debe considerar una orden \"en "
+"espera\" como cancelada."
+
+#: includes/class-cao.php:212
+msgid "days"
+msgstr "dias"
+
+#: includes/class-cao.php:219
+msgid "Restock"
+msgstr "Restock"
+
+#: includes/class-cao.php:221
+msgid "Activate to restock products in abandoned orders."
+msgstr "Activar para reabastecer stock productos en pedidos abandonados."
+
+#: includes/class-cao.php:223
+msgid ""
+"If enable, each product contained in orders canceled by the system, will be "
+"restocked in your products."
+msgstr ""
+"Si se habilita, cada producto contenido en pedidos cancelados por el "
+"sistema, se repondrá el stock en sus productos."
+
+#: includes/class-wp.php:76
+msgid "Donate"
+msgstr "Donar"
+
+#~ msgctxt ""
+#~ "%1$s is name of product, %2$s is initial stock, %3$s is new stock after "
+#~ "cancel order"
+#~ msgid "%1$s stock increased from %2$s to %3$s."
+#~ msgstr "El Stock %1$s se incrementara de %2$s a %3$s."
+
+#~ msgid "https://www.rvola.com"
+#~ msgstr "https://www.rvola.com"
+
+#~ msgid "studio RVOLA"
+#~ msgstr "studio RVOLA"
+
+#~ msgid "Cancel \"on hold\" orders after a certain number of days"
+#~ msgstr ""
+#~ "Cancele los pedidos \"en espera\" después de un cierto número de días"
+
+#~ msgid "https://github.com/rvola/woo-cancel-abandoned-order"
+#~ msgstr "https://github.com/rvola/woo-cancel-abandoned-order"

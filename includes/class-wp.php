@@ -30,7 +30,7 @@ class WP {
 	 */
 	public function __construct() {
 
-		add_action( 'init', array( $this, 'load_languages' ), 10 );
+		$this->load_languages();
 		add_filter( 'plugin_row_meta', array( $this, 'plugin_row_meta' ), 10, 2 );
 
 		require_once dirname( __FILE__ ) . '/class-cao.php';
@@ -56,7 +56,7 @@ class WP {
 	 */
 	public function load_languages() {
 
-		load_plugin_textdomain( 'woo-cancel-abandoned-order', false, plugin_basename( WOOCAO_FILE ) . '/languages' );
+		load_plugin_textdomain( 'woo-cancel-abandoned-order', false, plugin_basename( dirname( WOOCAO_FILE ) ) . '/languages' );
 	}
 
 	/**
