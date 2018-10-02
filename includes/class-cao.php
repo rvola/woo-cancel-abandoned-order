@@ -34,7 +34,7 @@ class CAO {
 	 * CAO constructor.
 	 */
 	public function __construct() {
-		add_action( 'admin_print_styles', array( $this, 'style' ), 10 );
+		add_action( 'admin_enqueue_scripts', array( $this, 'assets' ), 10, 1 );
 		$this->add_field_gateways();
 		$this->add_event_cron();
 
@@ -229,13 +229,11 @@ class CAO {
 	}
 
 	/**
-	 * Field style.
+	 * Load assets CSS & JS
 	 */
-	public function style() {
-
-		echo '<style type="text/css">';
-		echo '.woocommerce table.form-table .regular-input.woo_cao-field-days {width:70px}';
-		echo '</style>';
+	public function assets( $hook ) {
+		if ( 'woocommerce_page_wc-settings' == $hook ) {
+			wp_enqueue_style( 'woo_cao', plugins_url( 'assets/woo_cao.css', WOOCAO_FILE ), null, WOOCAO_VERSION, 'all' );
+		}
 	}
-
 }
