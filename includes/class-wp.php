@@ -33,8 +33,16 @@ class WP {
 		$this->load_languages();
 		add_filter( 'plugin_row_meta', array( $this, 'plugin_row_meta' ), 10, 2 );
 
-		require_once dirname( __FILE__ ) . '/class-cao.php';
+		$this->required();
+
 		new CAO();
+	}
+
+	/**
+	 * Required files
+	 */
+	public function required() {
+		require_once dirname( __FILE__ ) . '/class-cao.php';
 	}
 
 	/**
