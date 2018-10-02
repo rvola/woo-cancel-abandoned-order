@@ -216,11 +216,11 @@ class CAO {
 
 		if ( 'yes' === get_option( 'woocommerce_manage_stock' ) ) {
 			$new_fields['woocao_restock'] = array(
-				'title'       => __( 'Restock', 'woo-cancel-abandoned-order' ),
+				'title'       => __( 'Stock', 'woo-cancel-abandoned-order' ),
 				'type'        => 'checkbox',
-				'label'       => __( 'Activate to restock products in abandoned orders.', 'woo-cancel-abandoned-order' ),
+				'label'       => __( 'Restock the products of abandoned orders.', 'woo-cancel-abandoned-order' ),
 				'default'     => 'no',
-				'description' => __( 'If enable, each product contained in orders canceled by the system, will be restocked in your products.', 'woo-cancel-abandoned-order' ),
+				'description' => __( 'If enabled, each product contained in orders canceled by the system, will be restocked in your products.', 'woo-cancel-abandoned-order' ),
 			);
 		}
 
