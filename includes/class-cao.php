@@ -66,7 +66,7 @@ class CAO {
 
 		if ( ! wp_next_scheduled( self::CRON_EVENT ) ) {
 			wp_schedule_event(
-				strtotime( 'yesterday 0 hours' ), 'daily', self::CRON_EVENT
+				strtotime( 'yesterday 0 hours' ), 'hourly', self::CRON_EVENT
 			);
 		}
 		add_action( self::CRON_EVENT, array( $this, 'check_order' ), 10 );
@@ -95,13 +95,23 @@ class CAO {
 					isset( $options ) && is_array( $options )
 					&& isset( $options['woocao_enabled'] )
 					&& 'yes' === $options['woocao_enabled']
-					&& isset( $options['woocao_days'] )
-					&& ! empty( $options['woocao_days'] )
 				) {
+
 					$restock = isset( $options['woocao_restock'] ) && 'yes' === $options['woocao_restock'] ? 'yes' : 'no';
 
-					$old_date        = strtotime( 'today -' . $options['woocao_days'] . ' days' );
-					$old_date_format = date( 'Y-m-d 00:00:00', $old_date );
+					// Calculate time, depending on the mode
+					$mode = isset( $options['woocao_mode'] ) ? esc_html( $options['woocao_mode'] ) : 'daily';
+					switch ( $mode ) {
+						case 'daily':
+							$old_date        = strtotime( 'today -' . $options['woocao_days'] . ' days' );
+							$old_date_format = date( 'Y-m-d 00:00:00', $old_date );
+							break;
+
+						case 'hourly':
+							$old_date        = current_time( 'timestamp' ) - ( $options['woocao_hours'] * HOUR_IN_SECONDS );
+							$old_date_format = date( 'Y-m-d H:00:00', $old_date );
+							break;
+					}
 
 					$orders = $wpdb->get_results(
 						$wpdb->prepare(
@@ -202,15 +212,38 @@ class CAO {
 				'type'        => 'checkbox',
 				'label'       => __( 'Activation the automatic cancellation of orders.', 'woo-cancel-abandoned-order' ),
 				'default'     => 'no',
+				'value'       => array(
+					'hourly' => __( 'Hourly', 'woo-cancel-abandoned-order' ),
+					'daily'  => __( 'Daily', 'woo-cancel-abandoned-order' )
+				),
 				'description' => __( 'Enable this option to automatically cancel all "on Hold" orders that you have not received payment for.', 'woo-cancel-abandoned-order' ),
 			),
+			'woocao_mode'    => array(
+				'title'   => __( 'Mode', 'woo-cancel-abandoned-order' ),
+				'type'    => 'select',
+				'label'   => __( 'Activation the automatic cancellation of orders.', 'woo-cancel-abandoned-order' ),
+				'default' => 'daily',
+				'options' => array(
+					'hourly' => __( 'Hourly', 'woo-cancel-abandoned-order' ),
+					'daily'  => __( 'Daily', 'woo-cancel-abandoned-order' )
+				),
+				'class'   => 'woo_cao-field-mode',
+			),
+			'woocao_hours'   => array(
+				'title'       => __( 'Lifetime in hour', 'woo-cancel-abandoned-order' ),
+				'type'        => 'number',
+				'description' => __( 'Enter the number of hours (whole number) during which the system must consider a "pending" command as canceled.', 'woo-cancel-abandoned-order' ),
+				'default'     => apply_filters( 'woo_cao_default_hours', '1' ),
+				'placeholder' => __( 'days', 'woo-cancel-abandoned-order' ),
+				'class'       => 'woo_cao-field-hourly woo_cao-field-moded',
+			),
 			'woocao_days'    => array(
-				'title'       => __( 'Lifetime ', 'woo-cancel-abandoned-order' ),
+				'title'       => __( 'Lifetime in days', 'woo-cancel-abandoned-order' ),
 				'type'        => 'number',
 				'description' => __( 'Enter the number of days that the system must consider a "on Hold" order as canceled.', 'woo-cancel-abandoned-order' ),
 				'default'     => apply_filters( 'woo_cao_default_days', '15' ),
 				'placeholder' => __( 'days', 'woo-cancel-abandoned-order' ),
-				'class'       => 'woo_cao-field-days',
+				'class'       => 'woo_cao-field-daily woo_cao-field-moded',
 			),
 		);
 
@@ -234,6 +267,7 @@ class CAO {
 	public function assets( $hook ) {
 		if ( 'woocommerce_page_wc-settings' == $hook ) {
 			wp_enqueue_style( 'woo_cao', plugins_url( 'assets/woo_cao.css', WOOCAO_FILE ), null, WOOCAO_VERSION, 'all' );
+			wp_enqueue_script( 'woo_cao', plugins_url( 'assets/woo_cao.js', WOOCAO_FILE ), array( 'jquery' ), WOOCAO_VERSION, true );
 		}
 	}
 }

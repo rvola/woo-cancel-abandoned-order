@@ -32,6 +32,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 define( 'WOOCAO_FILE', __FILE__ );
+define( 'WOOCAO_VERSION', '1.4.0' );
 
 include_once ABSPATH . 'wp-admin/includes/plugin.php';
 if ( is_plugin_active( 'woocommerce/woocommerce.php' ) ) {
