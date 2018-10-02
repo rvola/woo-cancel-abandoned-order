@@ -36,6 +36,7 @@ class WP {
 		$this->required();
 
 		new CAO();
+		new Updater();
 	}
 
 	/**
@@ -43,6 +44,8 @@ class WP {
 	 */
 	public function required() {
 		require_once dirname( __FILE__ ) . '/class-cao.php';
+		require_once dirname( __FILE__ ) . '/class-updater.php';
+		include_once dirname( __FILE__ ) . '/updater.php';
 	}
 
 	/**
