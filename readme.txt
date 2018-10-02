@@ -5,21 +5,21 @@ Tags: woocommerce, cancel, order, pending, on hold, gateway
 Requires PHP: 5.3
 Requires at least: 4.0
 Tested up to: 4.9
-Stable tag: 1.3.2
+Stable tag: 1.4.0
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
-Cancel "on hold" orders after a certain number of days
+Cancel "on hold" orders after a certain number of days or by hours
 
 == Description ==
 
 **WooCommerce Cancel Abandoned Order** allows you to add a small option that will take care of dealing with "abandoned" commands.
 
-If you have check or transfer type orders for example, you will be able to set a maximum number of days to receive the payment.
+If you have check or transfer type orders for example, you will be able to set a maximum number of days or by hours to receive the payment.
 
 WooCommerce Cancel Abandoned Order, will take care of checking this and change the status of the order to "Cancel" if you have not received payment on time.
 
-Since version **1.3.0** the system takes care of returning your products abandoned orders in stock ... Amazing!
+Since version **1.4.0** it's possible to cancel orders in hours ... Yeah!
 
 [**GitHub**](https://github.com/rvola/woo-cancel-abandoned-order) | [**Donate**](https://www.paypal.me/rvola)
 
@@ -31,24 +31,25 @@ This section describes how to install the plugin and get it working.
 2. Activate the plugin through the 'Plugins' screen in WordPress
 3. By default you can control the orders on the payment gateways: Check and BACS. Go to the options of the payment pages on WooCommerce.
 
-*To add another payment gateway, simply use the `woo_cao_gateways` filters, more information on the [Wiki](https://github.com/rvola/woo-cancel-abandoned-order/wiki)*
+*To add another payment gateway, simply use the **woo_cao_gateways** filters, more information on the [Wiki](https://github.com/rvola/woo-cancel-abandoned-order/wiki)*
 
 == Requirement ==
 
 * PHP minimal: **5.3**
 * WordPress minimal: **4.0**
-* WooCommerce minimal : **2.2.0**
+* WooCommerce minimal : **2.2**
 
 == Hooks ==
 _Action_
 
-* `woo_cao_cancel_order` ($order_id) / After cancel order.
-* `woo_cao_restock_item` ($product_id, $old_stock, $new_stock, $order, $product ) / After restock product.
+* **woo_cao_cancel_order** ($order_id) : After cancel order.
+* **woo_cao_restock_item** ($product_id, $old_stock, $new_stock, $order, $product ) : After restock product.
 
 _Filters_
 
-* `woo_cao_gateways` / Adds a payment gateway for the control.
-* `woo_cao_default_days` / Default value of the number of days for order processing.
+* **woo_cao_gateways** : Adds a payment gateway for the control.
+* **woo_cao_default_hours** : Default value of the number of hours for order processing.
+* **woo_cao_default_days** : Default value of the number of days for order processing.
 
 
 == Wiki ==
@@ -58,7 +59,16 @@ _Filters_
 
 = What does the plugin do? =
 
-Depending on the options on the payment gateway options page *(enabled or disabled, maximum number of days)*, the plugin will fetch every day at midnight, the "on hold" commands with the payment gateway type *(default Check, BACS)* and if the maximum number of days indicated and exceeded, the system will take care to update the status of the order.
+Depending on the options defined in the payment gateway options page, the system will cancel orders whose payments have not been received.
+
+= Mode =
+You can cancel orders in hours or days.
+For example, if I put the mode "time", I can cancel orders pending after 2 hours.
+Another example, in days, I can cancel orders that I have not received payment within 7 days.
+
+The execution of the cleaning is done like this:
+Mode **"hourly"**: every hour to 00 minutes
+Mode **"Daily"**: every day at 0:00
 
 = Restock =
 
@@ -70,8 +80,16 @@ The GIT repository is available here [https://github.com/rvola/woo-cancel-abando
 
 == Changelog ==
 
+= 1.4.0 / 2018-10-02 =
+* NEW / Class Updater for modifications
+* NEW / The plugin can work in hours
+* NEW / Method 'required' for class WP
+* UPDATED / Explain in admin for restock
+* NEW / Load assets by file
+* ✔︎ Compatibility WooCommerce 3.5
+
 = 1.3.1 / 2018-05-23 =
-* ✔︎ Compatibility WooCommerce 3.4.0
+* ✔︎ Compatibility WooCommerce 3.4
 
 = 1.3.0 / 2018-03-01 =
 * NEW restock

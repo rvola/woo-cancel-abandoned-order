@@ -37,7 +37,6 @@ class CAO {
 		add_action( 'admin_enqueue_scripts', array( $this, 'assets' ), 10, 1 );
 		$this->add_field_gateways();
 		$this->add_event_cron();
-
 	}
 
 	/**

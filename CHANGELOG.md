@@ -1,5 +1,15 @@
 # Changelog
 
+## [1.4.0](https://github.com/rvola/woo-cancel-abandoned-order/tree/1.4.0) - 2018-10-02
+[Full Changelog](https://github.com/rvola/woo-cancel-abandoned-order/compare/1.3.2...1.4.0)
+
+* NEW / Class Updater for modifications
+* NEW / The plugin can work in hours
+* NEW / Method 'required' for class WP
+* UPDATED / Explain in admin for restock
+* NEW / Load assets by file
+* ✔︎ Compatibility WooCommerce 3.5
+
 ## [1.3.2](https://github.com/rvola/woo-cancel-abandoned-order/tree/1.3.2) - 2018-06-01
 [Full Changelog](https://github.com/rvola/woo-cancel-abandoned-order/compare/1.3.1...1.3.2)
 
