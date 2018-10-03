@@ -9,6 +9,16 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
+ * 1.4.1
+ * Clean cron. / Reload for olfder PHP
+ */
+function woo_cao_update__141() {
+	if ( version_compare( phpversion(), '7.0', '<' ) ) {
+		woo_cao_update__140();
+	}
+}
+
+/**
  * 1.4.0
  * Clean cron.
  */

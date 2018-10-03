@@ -43,8 +43,9 @@ final class Updater {
 	 * Execute the update function if it exists.
 	 */
 	private function update() {
-		if ( function_exists( $this->name_update() ) ) {
-			$this->name_update()();
+		$func = $this->name_update();
+		if ( function_exists( $func ) ) {
+			$func();
 		}
 		update_option( self::OPTION_NAME, WOOCAO_VERSION, true );
 	}
