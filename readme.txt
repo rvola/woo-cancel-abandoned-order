@@ -5,7 +5,7 @@ Tags: woocommerce, cancel, order, pending, on hold, gateway
 Requires PHP: 5.3
 Requires at least: 4.0
 Tested up to: 4.9
-Stable tag: 1.4.0
+Stable tag: 1.4.1
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -63,11 +63,11 @@ Depending on the options defined in the payment gateway options page, the system
 
 = Mode =
 You can cancel orders in hours or days.
-For example, if I put the mode "time", I can cancel orders pending after 2 hours.
-Another example, in days, I can cancel orders that I have not received payment within 7 days.
+For example, if I put the mode "Hourly", I can cancel orders pending after 2 hours.
+Another example, in mode "Daily", I can cancel orders that I have not received payment within 7 days.
 
 The execution of the cleaning is done like this:
-Mode **"hourly"**: every hour to 00 minutes
+Mode **"Hourly"**: every hour to 00 minutes
 Mode **"Daily"**: every day at 0:00
 
 = Restock =
@@ -79,6 +79,10 @@ We’re glad you want to help us improve **WooCommerce Cancel Abandoned Order**!
 The GIT repository is available here [https://github.com/rvola/woo-cancel-abandoned-order](https://github.com/rvola/woo-cancel-abandoned-order)
 
 == Changelog ==
+
+= 1.4.1 / 2018-10-03 =
+* UPDATED / Rename file updater
+* FIX / Updater crash with older PHP < 7.0
 
 = 1.4.0 / 2018-10-02 =
 * NEW / Class Updater for modifications

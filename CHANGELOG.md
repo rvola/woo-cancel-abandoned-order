@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.4.1](https://github.com/rvola/woo-cancel-abandoned-order/tree/1.4.1) - 2018-10-03
+[Full Changelog](https://github.com/rvola/woo-cancel-abandoned-order/compare/1.4.0...1.4.1)
+
+* UPDATED / Rename file updater
+* FIX / Updater crash with older PHP < 7.0
+
 ## [1.4.0](https://github.com/rvola/woo-cancel-abandoned-order/tree/1.4.0) - 2018-10-02
 [Full Changelog](https://github.com/rvola/woo-cancel-abandoned-order/compare/1.3.2...1.4.0)
 

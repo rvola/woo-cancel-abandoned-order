@@ -55,8 +55,8 @@ Depending on the options defined in the payment gateway options page, the system
 
 #### Mode
 You can cancel orders in hours or days.
-For example, if I put the mode "time", I can cancel orders pending after 2 hours.
-Another example, in days, I can cancel orders that I have not received payment within 7 days.
+For example, if I put the mode "Hourly", I can cancel orders pending after 2 hours.
+Another example, in mode "Daily", I can cancel orders that I have not received payment within 7 days.
 
 The execution of the cleaning is done like this:
 Mode **"hourly"**: every hour to 00 minutes
