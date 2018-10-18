@@ -211,10 +211,6 @@ class CAO {
 				'type'        => 'checkbox',
 				'label'       => __( 'Activation the automatic cancellation of orders.', 'woo-cancel-abandoned-order' ),
 				'default'     => 'no',
-				'value'       => array(
-					'hourly' => __( 'Hourly', 'woo-cancel-abandoned-order' ),
-					'daily'  => __( 'Daily', 'woo-cancel-abandoned-order' )
-				),
 				'description' => __( 'Enable this option to automatically cancel all "on Hold" orders that you have not received payment for.', 'woo-cancel-abandoned-order' ),
 			),
 			'woocao_mode'    => array(
