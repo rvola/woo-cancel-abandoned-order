@@ -102,15 +102,16 @@ class CAO {
 					$mode = isset( $options['woocao_mode'] ) ? esc_html( $options['woocao_mode'] ) : 'daily';
 					switch ( $mode ) {
 						case 'daily':
-							$old_date        = strtotime( 'today -' . $options['woocao_days'] . ' days' );
-							$old_date_format = date( 'Y-m-d 00:00:00', $old_date );
+							$old_date = strtotime( 'today -' . $options['woocao_days'] . ' days' );
 							break;
 
 						case 'hourly':
-							$old_date        = current_time( 'timestamp' ) - ( $options['woocao_hours'] * HOUR_IN_SECONDS );
-							$old_date_format = date( 'Y-m-d H:00:00', $old_date );
+							$old_date = current_time( 'timestamp' ) - ( $options['woocao_hours'] * HOUR_IN_SECONDS );
 							break;
+
 					}
+					$old_date        = apply_filters( 'woo_cao_date_order', $old_date, $gateway, $mode );
+					$old_date_format = date( 'Y-m-d 00:00:00', $old_date );
 
 					$orders = $wpdb->get_results(
 						$wpdb->prepare(
