@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.5.0](https://github.com/rvola/woo-cancel-abandoned-order/tree/1.5.0) - 2018-10-22
+[Full Changelog](https://github.com/rvola/woo-cancel-abandoned-order/compare/1.4.1...1.5.0)
+
+* NEW / Filter 'woo_cao_date_order'. Change the calculation date for pending orders.
+* ✔︎ Compatibility WP 5.0
+* CHECK / End of support PHP 5.6 http://php.net/supported-versions.php
+* USELESS / Options 'value' in field checkbox.
+
 ## [1.4.1](https://github.com/rvola/woo-cancel-abandoned-order/tree/1.4.1) - 2018-10-03
 [Full Changelog](https://github.com/rvola/woo-cancel-abandoned-order/compare/1.4.0...1.4.1)
 

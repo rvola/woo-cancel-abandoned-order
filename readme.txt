@@ -5,7 +5,7 @@ Tags: woocommerce, cancel, order, pending, on hold, gateway
 Requires PHP: 7.0
 Requires at least: 4.0
 Tested up to: 5.0
-Stable tag: 1.4.1
+Stable tag: 1.5.0
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -48,6 +48,7 @@ _Action_
 _Filters_
 
 * **woo_cao_gateways** : Adds a payment gateway for the control.
+* **woo_cao_date_order** ($old_date, $gateway, $mode) : Change the calculation date for pending orders.
 * **woo_cao_default_hours** : Default value of the number of hours for order processing.
 * **woo_cao_default_days** : Default value of the number of days for order processing.
 
@@ -79,6 +80,12 @@ We’re glad you want to help us improve **WooCommerce Cancel Abandoned Order**!
 The GIT repository is available here [https://github.com/rvola/woo-cancel-abandoned-order](https://github.com/rvola/woo-cancel-abandoned-order)
 
 == Changelog ==
+
+= 1.5.0 / 2018-10-22 =
+* NEW / Filter 'woo_cao_date_order'. Change the calculation date for pending orders.
+* ✔︎ Compatibility WP 5.0
+* CHECK / End of support PHP 5.6 http://php.net/supported-versions.php
+* USELESS / Options 'value' in field checkbox.
 
 = 1.4.1 / 2018-10-03 =
 * UPDATED / Rename file updater
