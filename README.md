@@ -41,6 +41,7 @@ _Action_
 _Filters_
 
 * **woo_cao_gateways** : Adds a payment gateway for the control.
+* **woo_cao_date_order** ($old_date, $gateway, $mode) : Change the calculation date for pending orders.
 * **woo_cao_default_hours** : Default value of the number of hours for order processing.
 * **woo_cao_default_days** : Default value of the number of days for order processing.
 
