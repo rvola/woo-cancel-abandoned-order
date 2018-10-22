@@ -2,7 +2,7 @@
 Contributors: rvola
 Donate link: https://www.paypal.me/rvola
 Tags: woocommerce, cancel, order, pending, on hold, gateway
-Requires PHP: 5.3
+Requires PHP: 7.0
 Requires at least: 4.0
 Tested up to: 4.9
 Stable tag: 1.4.1
@@ -35,7 +35,7 @@ This section describes how to install the plugin and get it working.
 
 == Requirement ==
 
-* PHP minimal: **5.3**
+* PHP minimal: **7.0**
 * WordPress minimal: **4.0**
 * WooCommerce minimal : **2.2**
 
