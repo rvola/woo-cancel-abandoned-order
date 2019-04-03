@@ -4,7 +4,7 @@ Donate link: https://www.paypal.me/rvola
 Tags: woocommerce, cancel, order, pending, on hold, gateway
 Requires PHP: 7.0
 Requires at least: 4.0
-Tested up to: 5.1
+Tested up to: 5.2
 Stable tag: 1.5.0
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
