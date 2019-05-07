@@ -5,7 +5,7 @@ Tags: woocommerce, cancel, order, pending, on hold, gateway
 Requires PHP: 7.0
 Requires at least: 4.0
 Tested up to: 5.2
-Stable tag: 1.5.1
+Stable tag: 1.6.0
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -18,8 +18,6 @@ Cancel "on hold" orders after a certain number of days or by hours
 If you have check or transfer type orders for example, you will be able to set a maximum number of days or by hours to receive the payment.
 
 WooCommerce Cancel Abandoned Order, will take care of checking this and change the status of the order to "Cancel" if you have not received payment on time.
-
-Since version **1.4.0** it's possible to cancel orders in hours ... Yeah!
 
 [**GitHub**](https://github.com/rvola/woo-cancel-abandoned-order) | [**Donate**](https://www.paypal.me/rvola)
 
@@ -51,6 +49,7 @@ _Filters_
 * **woo_cao_date_order** ($old_date, $gateway, $mode) : Change the calculation date for pending orders.
 * **woo_cao_default_hours** : Default value of the number of hours for order processing.
 * **woo_cao_default_days** : Default value of the number of days for order processing.
+* **woo_cao_statustocancel** ($status) : Allows you to add or change which WooCommerce order status the plugin should cancel.
 
 
 == Wiki ==
@@ -75,11 +74,18 @@ Mode **"Daily"**: every day at 0:00
 
 If you checked the box to enable this feature in the gateway, the system will restock each product line of the abandoned order.
 
+= I would like to cancel orders pending payment =
+Follow the [tutorial here](https://github.com/rvola/woo-cancel-abandoned-order/wiki/Change-the-status-type-for-the-cancellation-process) to change the status of orders to cancel. By default the "on-hold" commands are canceled.
+
 = I want to make suggestions =
 We’re glad you want to help us improve **WooCommerce Cancel Abandoned Order**!
 The GIT repository is available here [https://github.com/rvola/woo-cancel-abandoned-order](https://github.com/rvola/woo-cancel-abandoned-order)
 
 == Changelog ==
+
+= 1.6.0 / 2019-05-07 =
+* NEW / Order status hook for the cancel process.
+* MINOR / code style call Class external.
 
 = 1.5.1 / 2019-04-03 =
 * ✔︎ Compatibility WP 5.2
