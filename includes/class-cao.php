@@ -7,6 +7,8 @@
 
 namespace RVOLA\WOO\CAO;
 
+use WC_Order;
+
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
@@ -153,7 +155,7 @@ class CAO {
 	 * @param int $order_id order ID.
 	 */
 	private function cancel_order( $order_id ) {
-		$order = new \WC_Order( $order_id );
+		$order = new WC_Order( $order_id );
 
 		$order->update_status(
 			'cancelled',
@@ -170,7 +172,7 @@ class CAO {
 	 */
 	private function restock( $order_id ) {
 
-		$order = new \WC_Order( $order_id );
+		$order = new WC_Order( $order_id );
 
 		$line_items = $order->get_items();
 
