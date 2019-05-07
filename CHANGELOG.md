@@ -1,5 +1,10 @@
 # Changelog
 
+## [1.6.0](https://github.com/rvola/woo-cancel-abandoned-order/tree/1.6.0) - 2019-05-07
+[Full Changelog](https://github.com/rvola/woo-cancel-abandoned-order/compare/1.5.1...1.6.0)
+* NEW / Order status hook for the cancel process.
+* MINOR / code style call Class external.
+
 ## [1.5.1](https://github.com/rvola/woo-cancel-abandoned-order/tree/1.5.1) - 2019-04-03
 [Full Changelog](https://github.com/rvola/woo-cancel-abandoned-order/compare/1.5.0...1.5.1)
 
