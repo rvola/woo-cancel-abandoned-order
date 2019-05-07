@@ -115,6 +115,9 @@ class CAO {
 					$old_date        = apply_filters( 'woo_cao_date_order', $old_date, $gateway, $mode );
 					$old_date_format = date( 'Y-m-d 00:00:00', $old_date );
 
+					// Status to cancel
+					$woo_status = $this->woo_status();
+
 					$orders = $wpdb->get_results(
 						$wpdb->prepare(
 							"
@@ -123,7 +126,7 @@ class CAO {
 							INNER JOIN $wpdb->postmeta as meta
 							ON posts.ID = meta.post_id
 							WHERE posts.post_type = 'shop_order'
-							AND posts.post_status = 'wc-on-hold'
+							AND posts.post_status IN ('$woo_status')
 							AND posts.post_date < %s
 							AND meta.meta_key = '_payment_method'
 							AND meta.meta_value = %s
@@ -163,6 +166,36 @@ class CAO {
 		);
 		do_action( 'woo_cao_cancel_order', $order_id );
 
+	}
+
+	private function woo_status() {
+		$woo_status            = array();
+		$woo_status_authorized = array(
+			'pending',
+			'on-hold',
+			'processing',
+			'completed',
+			'refunded',
+			'failed'
+		);
+
+		$default_status = apply_filters( 'woo_cao_statustocancel', array( 'on-hold' ) );
+
+		if ( $default_status && is_array( $default_status ) ) {
+			foreach ( $default_status as $status ) {
+				if ( in_array( $status, $woo_status_authorized ) ) {
+					$woo_status[] = sprintf( 'wc-%s', $status );
+				}
+			}
+		}
+
+		if ( empty( $woo_status ) ) {
+			$woo_status[] = 'wc-on-hold';
+		}
+
+		$woo_status = implode( "','", $woo_status );
+
+		return $woo_status;
 	}
 
 	/**
