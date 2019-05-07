@@ -13,9 +13,6 @@ If you have check or transfer type orders for example, you will be able to set a
 
 WooCommerce Cancel Abandoned Order, will take care of checking this and change the status of the order to "Cancel" if you have not received payment on time.
 
-Since version **1.4.0** it's possible to cancel orders in hours ... Yeah!
-
-
 ## Installation
 
 This section describes how to install the plugin and get it working.
@@ -44,6 +41,7 @@ _Filters_
 * **woo_cao_date_order** ($old_date, $gateway, $mode) : Change the calculation date for pending orders.
 * **woo_cao_default_hours** : Default value of the number of hours for order processing.
 * **woo_cao_default_days** : Default value of the number of days for order processing.
+* **woo_cao_statustocancel** ($status) : Allows you to add or change which WooCommerce order status the plugin should cancel.
 
 ## Wiki
 * [A help section on the code is available here](https://github.com/rvola/woo-cancel-abandoned-order/wiki)
@@ -67,7 +65,12 @@ Mode **"Daily"**: every day at 0:00
 
 If you checked the box to enable this feature in the gateway, the system will restock each product line of the abandoned order.
 
+#### I would like to cancel orders pending payment
+
+Follow the [tutorial here](https://github.com/rvola/woo-cancel-abandoned-order/wiki/Change-the-status-type-for-the-cancellation-process) to change the status of orders to cancel. By default the "on-hold" commands are canceled.
+
 ## Links
 
 * [**Changelog**](https://github.com/rvola/woo-cancel-abandoned-order/blob/master/CHANGELOG.md)
 * [**Download on WordPress**](https://wordpress.org/plugins/woo-cancel-abandoned-order/)
+* [**WIKI**](https://github.com/rvola/woo-cancel-abandoned-order/wiki)
