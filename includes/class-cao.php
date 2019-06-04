@@ -113,7 +113,7 @@ class CAO {
 
 					}
 					$old_date        = apply_filters( 'woo_cao_date_order', $old_date, $gateway, $mode );
-					$old_date_format = date( 'Y-m-d 00:00:00', $old_date );
+					$old_date_format = date( 'Y-m-d H:i:s', $old_date );
 
 					// Status to cancel
 					$woo_status = $this->woo_status();
