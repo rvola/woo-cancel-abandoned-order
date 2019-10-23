@@ -19,7 +19,7 @@ Requires at least:      4.0
 Tested up to:           5.2
 Requires PHP:           7.0
 WC requires at least:   2.2
-WC tested up to:        3.6
+WC tested up to:        3.8
 
 License:                GNU General Public License v3.0
 License URI:            https://www.gnu.org/licenses/gpl-3.0.html
@@ -32,7 +32,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 define( 'WOOCAO_FILE', __FILE__ );
-define( 'WOOCAO_VERSION', '1.6.1' );
+define( 'WOOCAO_VERSION', '1.7.0' );
 
 include_once ABSPATH . 'wp-admin/includes/plugin.php';
 if ( is_plugin_active( 'woocommerce/woocommerce.php' ) ) {
