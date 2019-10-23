@@ -84,7 +84,7 @@ class WP {
 				$plugin_meta,
 				sprintf(
 					'<a href="https://www.paypal.me/rvola" target="_blank">%s</a>',
-					__( 'Donate', 'woo-cancel-abandoned-order' )
+					esc_html__( 'Donate', 'woo-cancel-abandoned-order' )
 				)
 			);
 		}
