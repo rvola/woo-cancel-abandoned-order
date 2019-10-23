@@ -164,6 +164,11 @@ class CAO {
 
 	}
 
+	/**
+	 * Returns the status of the orders to be canceled.
+	 *
+	 * @return array
+	 */
 	private function woo_status() {
 		$woo_status            = array();
 		$woo_status_authorized = array(
