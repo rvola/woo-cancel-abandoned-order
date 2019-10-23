@@ -98,8 +98,6 @@ class CAO {
 					&& 'yes' === $options['woocao_enabled']
 				) {
 
-					$restock = isset( $options['woocao_restock'] ) && 'yes' === $options['woocao_restock'] ? 'yes' : 'no';
-
 					// Calculate time, depending on the mode
 					$mode = isset( $options['woocao_mode'] ) ? esc_html( $options['woocao_mode'] ) : 'daily';
 					switch ( $mode ) {
@@ -113,7 +111,7 @@ class CAO {
 
 					}
 					$old_date        = apply_filters( 'woo_cao_date_order', $old_date, $gateway, $mode );
-					$old_date_format = date( 'Y-m-d 00:00:00', $old_date );
+					$old_date_format = date( 'Y-m-d H:i:s', $old_date );
 
 					// Status to cancel
 					$woo_status = $this->woo_status();
@@ -139,11 +137,6 @@ class CAO {
 						foreach ( $orders as $order ) {
 							// Cancel order.
 							$this->cancel_order( $order->ID );
-
-							// Restock product.
-							if ( 'yes' === $restock ) {
-								$this->restock( $order->ID );
-							}
 						}
 						wp_cache_flush();
 					}
@@ -160,14 +153,22 @@ class CAO {
 	private function cancel_order( $order_id ) {
 		$order = new WC_Order( $order_id );
 
+		$message = $this->woocao_icon();
+		$message .= esc_html__( 'Cancellation of the order because payment not received at time.', 'woo-cancel-abandoned-order' );
+
 		$order->update_status(
 			'cancelled',
-			__( 'Cancellation of the order because payment not received at time.', 'woo-cancel-abandoned-order' )
+			$message
 		);
 		do_action( 'woo_cao_cancel_order', $order_id );
 
 	}
 
+	/**
+	 * Returns the status of the orders to be canceled.
+	 *
+	 * @return array
+	 */
 	private function woo_status() {
 		$woo_status            = array();
 		$woo_status_authorized = array(
@@ -199,30 +200,12 @@ class CAO {
 	}
 
 	/**
-	 * Will check and store the products of the canceled order.
-	 *
-	 * @param int $order_id order ID.
+	 * Return the icon for status messages.
+	 * 
+	 * @return string
 	 */
-	private function restock( $order_id ) {
-
-		$order = new WC_Order( $order_id );
-
-		$line_items = $order->get_items();
-
-		foreach ( $line_items as $item_id => $item ) {
-
-			$item_data = $item->get_data();
-			$product   = $item->get_product();
-
-			if ( $product && $product->managing_stock() ) {
-				$old_stock = $product->get_stock_quantity();
-				$new_stock = wc_update_product_stock( $product, $item_data['quantity'], 'increase' );
-
-				// translators: %1$s is name of product, %2$s is initial stock, %3$s is new stock after cancel order.
-				$order->add_order_note( sprintf( _x( '%1$s stock increased from %2$s to %3$s.', '%1$s is name of product, %2$s is initial stock, %3$s is new stock after cancel order', 'woo-cancel-abandoned-order' ), $product->get_name(), $old_stock, $new_stock ) );
-				do_action( 'woo_cao_restock_item', $product->get_id(), $old_stock, $new_stock, $order, $product );
-			}
-		}
+	private function woocao_icon() {
+		return sprintf( '<span class="woocao-icon" title="%s"></span>', esc_html__( 'WooCommerce Cancel Abandoned Order', 'woo-cancel-abandoned-order' ) );
 	}
 
 	/**
@@ -237,56 +220,46 @@ class CAO {
 
 		$new_fields = array(
 			'woocao'         => array(
-				'title'       => __( 'WooCommerce Cancel Abandoned Order', 'woo-cancel-abandoned-order' ),
+				'title'       => esc_html__( 'WooCommerce Cancel Abandoned Order', 'woo-cancel-abandoned-order' ),
 				'type'        => 'title',
 				'description' => '',
 				'default'     => '',
 			),
 			'woocao_enabled' => array(
-				'title'       => __( 'Enable/Disable', 'woo-cancel-abandoned-order' ),
+				'title'       => esc_html__( 'Enable/Disable', 'woo-cancel-abandoned-order' ),
 				'type'        => 'checkbox',
-				'label'       => __( 'Activation the automatic cancellation of orders.', 'woo-cancel-abandoned-order' ),
+				'label'       => esc_html__( 'Activation the automatic cancellation of orders.', 'woo-cancel-abandoned-order' ),
 				'default'     => 'no',
-				'description' => __( 'Enable this option to automatically cancel all "on Hold" orders that you have not received payment for.', 'woo-cancel-abandoned-order' ),
+				'description' => esc_html__( 'Enable this option to automatically cancel all "on Hold" orders that you have not received payment for.', 'woo-cancel-abandoned-order' ),
 			),
 			'woocao_mode'    => array(
-				'title'   => __( 'Mode', 'woo-cancel-abandoned-order' ),
+				'title'   => esc_html__( 'Mode', 'woo-cancel-abandoned-order' ),
 				'type'    => 'select',
-				'label'   => __( 'Activation the automatic cancellation of orders.', 'woo-cancel-abandoned-order' ),
+				'label'   => esc_html__( 'Activation the automatic cancellation of orders.', 'woo-cancel-abandoned-order' ),
 				'default' => 'daily',
 				'options' => array(
-					'hourly' => __( 'Hourly', 'woo-cancel-abandoned-order' ),
-					'daily'  => __( 'Daily', 'woo-cancel-abandoned-order' )
+					'hourly' => esc_html__( 'Hourly', 'woo-cancel-abandoned-order' ),
+					'daily'  => esc_html__( 'Daily', 'woo-cancel-abandoned-order' )
 				),
 				'class'   => 'woo_cao-field-mode',
 			),
 			'woocao_hours'   => array(
-				'title'       => __( 'Lifetime in hour', 'woo-cancel-abandoned-order' ),
+				'title'       => esc_html__( 'Lifetime in hour', 'woo-cancel-abandoned-order' ),
 				'type'        => 'number',
-				'description' => __( 'Enter the number of hours (whole number) during which the system must consider a "pending" command as canceled.', 'woo-cancel-abandoned-order' ),
+				'description' => esc_html__( 'Enter the number of hours (whole number) during which the system must consider a "pending" command as canceled.', 'woo-cancel-abandoned-order' ),
 				'default'     => apply_filters( 'woo_cao_default_hours', '1' ),
-				'placeholder' => __( 'days', 'woo-cancel-abandoned-order' ),
+				'placeholder' => esc_html__( 'days', 'woo-cancel-abandoned-order' ),
 				'class'       => 'woo_cao-field-hourly woo_cao-field-moded',
 			),
 			'woocao_days'    => array(
-				'title'       => __( 'Lifetime in days', 'woo-cancel-abandoned-order' ),
+				'title'       => esc_html__( 'Lifetime in days', 'woo-cancel-abandoned-order' ),
 				'type'        => 'number',
-				'description' => __( 'Enter the number of days that the system must consider a "on Hold" order as canceled.', 'woo-cancel-abandoned-order' ),
+				'description' => esc_html__( 'Enter the number of days that the system must consider a "on Hold" order as canceled.', 'woo-cancel-abandoned-order' ),
 				'default'     => apply_filters( 'woo_cao_default_days', '15' ),
-				'placeholder' => __( 'days', 'woo-cancel-abandoned-order' ),
+				'placeholder' => esc_html__( 'days', 'woo-cancel-abandoned-order' ),
 				'class'       => 'woo_cao-field-daily woo_cao-field-moded',
 			),
 		);
-
-		if ( 'yes' === get_option( 'woocommerce_manage_stock' ) ) {
-			$new_fields['woocao_restock'] = array(
-				'title'       => __( 'Stock', 'woo-cancel-abandoned-order' ),
-				'type'        => 'checkbox',
-				'label'       => __( 'Restock the products of abandoned orders.', 'woo-cancel-abandoned-order' ),
-				'default'     => 'no',
-				'description' => __( 'If enabled, each product contained in orders canceled by the system, will be restocked in your products.', 'woo-cancel-abandoned-order' ),
-			);
-		}
 
 		return array_merge( $fields, $new_fields );
 
@@ -296,8 +269,8 @@ class CAO {
 	 * Load assets CSS & JS
 	 */
 	public function assets( $hook ) {
+		wp_enqueue_style( 'woo_cao', plugins_url( 'assets/woo_cao.css', WOOCAO_FILE ), null, WOOCAO_VERSION, 'all' );
 		if ( 'woocommerce_page_wc-settings' == $hook ) {
-			wp_enqueue_style( 'woo_cao', plugins_url( 'assets/woo_cao.css', WOOCAO_FILE ), null, WOOCAO_VERSION, 'all' );
 			wp_enqueue_script( 'woo_cao', plugins_url( 'assets/woo_cao.js', WOOCAO_FILE ), array( 'jquery' ), WOOCAO_VERSION, true );
 		}
 	}

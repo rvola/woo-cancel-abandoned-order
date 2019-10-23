@@ -33,7 +33,6 @@ This section describes how to install the plugin and get it working.
 _Action_
 
 * **woo_cao_cancel_order** ($order_id) : After cancel order.
-* **woo_cao_restock_item** ($product_id, $old_stock, $new_stock, $order, $product ) : After restock product.
 
 _Filters_
 
@@ -60,10 +59,6 @@ Another example, in mode "Daily", I can cancel orders that I have not received p
 The execution of the cleaning is done like this:
 Mode **"hourly"**: every hour to 00 minutes
 Mode **"Daily"**: every day at 0:00
-
-#### Restock
-
-If you checked the box to enable this feature in the gateway, the system will restock each product line of the abandoned order.
 
 #### I would like to cancel orders pending payment
 

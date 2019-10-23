@@ -4,8 +4,8 @@ Donate link: https://www.paypal.me/rvola
 Tags: woocommerce, cancel, order, pending, on hold, gateway
 Requires PHP: 7.0
 Requires at least: 4.0
-Tested up to: 5.2
-Stable tag: 1.6.1
+Tested up to: 5.3
+Stable tag: 1.7.0
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -41,7 +41,6 @@ This section describes how to install the plugin and get it working.
 _Action_
 
 * **woo_cao_cancel_order** ($order_id) : After cancel order.
-* **woo_cao_restock_item** ($product_id, $old_stock, $new_stock, $order, $product ) : After restock product.
 
 _Filters_
 
@@ -70,10 +69,6 @@ The execution of the cleaning is done like this:
 Mode **"Hourly"**: every hour to 00 minutes
 Mode **"Daily"**: every day at 0:00
 
-= Restock =
-
-If you checked the box to enable this feature in the gateway, the system will restock each product line of the abandoned order.
-
 = I would like to cancel orders pending payment =
 Follow the [tutorial here](https://github.com/rvola/woo-cancel-abandoned-order/wiki/Change-the-status-type-for-the-cancellation-process) to change the status of orders to cancel. By default the "on-hold" commands are canceled.
 
@@ -82,6 +77,14 @@ We’re glad you want to help us improve **WooCommerce Cancel Abandoned Order**!
 The GIT repository is available here [https://github.com/rvola/woo-cancel-abandoned-order](https://github.com/rvola/woo-cancel-abandoned-order)
 
 == Changelog ==
+
+= 1.7.0 / 2019-10-23 =
+* ✔︎ Compatibility WP 5.3
+* ✔︎ Compatibility WOO 3.8
+* PHPDock missing
+* Added an icon in the order notes to identify the author (WOOCAO) - not retroactive
+* Escape i18n html
+* DELETED / Restock option / WooCommerce the management since June 2018 ...
 
 = 1.6.1 / 2019-06-04 =
 * FIX / Incorrect date format with time cancellation.
