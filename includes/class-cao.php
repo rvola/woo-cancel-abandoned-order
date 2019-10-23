@@ -203,43 +203,43 @@ class CAO {
 
 		$new_fields = array(
 			'woocao'         => array(
-				'title'       => __( 'WooCommerce Cancel Abandoned Order', 'woo-cancel-abandoned-order' ),
+				'title'       => esc_html__( 'WooCommerce Cancel Abandoned Order', 'woo-cancel-abandoned-order' ),
 				'type'        => 'title',
 				'description' => '',
 				'default'     => '',
 			),
 			'woocao_enabled' => array(
-				'title'       => __( 'Enable/Disable', 'woo-cancel-abandoned-order' ),
+				'title'       => esc_html__( 'Enable/Disable', 'woo-cancel-abandoned-order' ),
 				'type'        => 'checkbox',
-				'label'       => __( 'Activation the automatic cancellation of orders.', 'woo-cancel-abandoned-order' ),
+				'label'       => esc_html__( 'Activation the automatic cancellation of orders.', 'woo-cancel-abandoned-order' ),
 				'default'     => 'no',
-				'description' => __( 'Enable this option to automatically cancel all "on Hold" orders that you have not received payment for.', 'woo-cancel-abandoned-order' ),
+				'description' => esc_html__( 'Enable this option to automatically cancel all "on Hold" orders that you have not received payment for.', 'woo-cancel-abandoned-order' ),
 			),
 			'woocao_mode'    => array(
-				'title'   => __( 'Mode', 'woo-cancel-abandoned-order' ),
+				'title'   => esc_html__( 'Mode', 'woo-cancel-abandoned-order' ),
 				'type'    => 'select',
-				'label'   => __( 'Activation the automatic cancellation of orders.', 'woo-cancel-abandoned-order' ),
+				'label'   => esc_html__( 'Activation the automatic cancellation of orders.', 'woo-cancel-abandoned-order' ),
 				'default' => 'daily',
 				'options' => array(
-					'hourly' => __( 'Hourly', 'woo-cancel-abandoned-order' ),
-					'daily'  => __( 'Daily', 'woo-cancel-abandoned-order' )
+					'hourly' => esc_html__( 'Hourly', 'woo-cancel-abandoned-order' ),
+					'daily'  => esc_html__( 'Daily', 'woo-cancel-abandoned-order' )
 				),
 				'class'   => 'woo_cao-field-mode',
 			),
 			'woocao_hours'   => array(
-				'title'       => __( 'Lifetime in hour', 'woo-cancel-abandoned-order' ),
+				'title'       => esc_html__( 'Lifetime in hour', 'woo-cancel-abandoned-order' ),
 				'type'        => 'number',
-				'description' => __( 'Enter the number of hours (whole number) during which the system must consider a "pending" command as canceled.', 'woo-cancel-abandoned-order' ),
+				'description' => esc_html__( 'Enter the number of hours (whole number) during which the system must consider a "pending" command as canceled.', 'woo-cancel-abandoned-order' ),
 				'default'     => apply_filters( 'woo_cao_default_hours', '1' ),
-				'placeholder' => __( 'days', 'woo-cancel-abandoned-order' ),
+				'placeholder' => esc_html__( 'days', 'woo-cancel-abandoned-order' ),
 				'class'       => 'woo_cao-field-hourly woo_cao-field-moded',
 			),
 			'woocao_days'    => array(
-				'title'       => __( 'Lifetime in days', 'woo-cancel-abandoned-order' ),
+				'title'       => esc_html__( 'Lifetime in days', 'woo-cancel-abandoned-order' ),
 				'type'        => 'number',
-				'description' => __( 'Enter the number of days that the system must consider a "on Hold" order as canceled.', 'woo-cancel-abandoned-order' ),
+				'description' => esc_html__( 'Enter the number of days that the system must consider a "on Hold" order as canceled.', 'woo-cancel-abandoned-order' ),
 				'default'     => apply_filters( 'woo_cao_default_days', '15' ),
-				'placeholder' => __( 'days', 'woo-cancel-abandoned-order' ),
+				'placeholder' => esc_html__( 'days', 'woo-cancel-abandoned-order' ),
 				'class'       => 'woo_cao-field-daily woo_cao-field-moded',
 			),
 		);
