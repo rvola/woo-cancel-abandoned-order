@@ -153,9 +153,12 @@ class CAO {
 	private function cancel_order( $order_id ) {
 		$order = new WC_Order( $order_id );
 
+		$message = $this->woocao_icon();
+		$message .= esc_html__( 'Cancellation of the order because payment not received at time.', 'woo-cancel-abandoned-order' );
+
 		$order->update_status(
 			'cancelled',
-			__( 'Cancellation of the order because payment not received at time.', 'woo-cancel-abandoned-order' )
+			$message
 		);
 		do_action( 'woo_cao_cancel_order', $order_id );
 
@@ -189,6 +192,15 @@ class CAO {
 		$woo_status = implode( "','", $woo_status );
 
 		return $woo_status;
+	}
+
+	/**
+	 * Return the icon for status messages.
+	 * 
+	 * @return string
+	 */
+	private function woocao_icon() {
+		return sprintf( '<span class="woocao-icon" title="%s"></span>', esc_html__( 'WooCommerce Cancel Abandoned Order', 'woo-cancel-abandoned-order' ) );
 	}
 
 	/**
@@ -252,8 +264,8 @@ class CAO {
 	 * Load assets CSS & JS
 	 */
 	public function assets( $hook ) {
+		wp_enqueue_style( 'woo_cao', plugins_url( 'assets/woo_cao.css', WOOCAO_FILE ), null, WOOCAO_VERSION, 'all' );
 		if ( 'woocommerce_page_wc-settings' == $hook ) {
-			wp_enqueue_style( 'woo_cao', plugins_url( 'assets/woo_cao.css', WOOCAO_FILE ), null, WOOCAO_VERSION, 'all' );
 			wp_enqueue_script( 'woo_cao', plugins_url( 'assets/woo_cao.js', WOOCAO_FILE ), array( 'jquery' ), WOOCAO_VERSION, true );
 		}
 	}

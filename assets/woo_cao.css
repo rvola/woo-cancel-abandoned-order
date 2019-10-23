@@ -1,3 +1,15 @@
 .woocommerce table.form-table .woo_cao-field-mode {width:180px}
 .woocommerce table.form-table .regular-input.woo_cao-field-hourly,
 .woocommerce table.form-table .regular-input.woo_cao-field-daily {width:70px}
+
+.woocao-icon {
+	background-image: url("icon-woocao.svg");
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: contain;
+	display: inline-block;
+	width: 40px;
+	height: 17px;
+	cursor: help;
+	vertical-align: middle;
+}
