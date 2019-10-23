@@ -4,8 +4,8 @@ Donate link: https://www.paypal.me/rvola
 Tags: woocommerce, cancel, order, pending, on hold, gateway
 Requires PHP: 7.0
 Requires at least: 4.0
-Stable tag: 1.6.1
 Tested up to: 5.3
+Stable tag: 1.7.0
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -77,6 +77,14 @@ We’re glad you want to help us improve **WooCommerce Cancel Abandoned Order**!
 The GIT repository is available here [https://github.com/rvola/woo-cancel-abandoned-order](https://github.com/rvola/woo-cancel-abandoned-order)
 
 == Changelog ==
+
+= 1.7.0 / 2019-10-23 =
+* ✔︎ Compatibility WP 5.3
+* ✔︎ Compatibility WOO 3.8
+* PHPDock missing
+* Added an icon in the order notes to identify the author (WOOCAO) - not retroactive
+* Escape i18n html
+* DELETED / Restock option / WooCommerce the management since June 2018 ...
 
 = 1.6.1 / 2019-06-04 =
 * FIX / Incorrect date format with time cancellation.

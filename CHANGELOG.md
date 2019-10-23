@@ -1,5 +1,16 @@
 # Changelog
 
+## [1.7.0](https://github.com/rvola/woo-cancel-abandoned-order/tree/1.7.0) - 2019-10-23
+[Full Changelog](https://github.com/rvola/woo-cancel-abandoned-order/compare/1.6.1...1.7.0)
+
+* ✔︎ Compatibility WP 5.3
+* ✔︎ Compatibility WOO 3.8
+* PHPDock missing
+* Added an icon in the order notes to identify the author (WOOCAO) - not retroactive
+* Escape i18n html
+* DELETED / Restock option / WooCommerce the management since June 2018 ...
+
+
 ## [1.6.1](https://github.com/rvola/woo-cancel-abandoned-order/tree/1.6.1) - 2019-06-04
 [Full Changelog](https://github.com/rvola/woo-cancel-abandoned-order/compare/1.6.0...1.6.1)
 
