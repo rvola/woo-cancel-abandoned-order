@@ -5,7 +5,7 @@ Tags: woocommerce, cancel, order, pending, on hold, gateway
 Requires PHP: 7.0
 Requires at least: 4.0
 Tested up to: 5.3
-Stable tag: 1.7.0
+Stable tag: 1.7.1
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -78,6 +78,9 @@ The GIT repository is available here [https://github.com/rvola/woo-cancel-abando
 
 == Changelog ==
 
+= 1.7.1 / 2020-01-22 =
+* ✔︎ Compatibility WOO 3.9
+
 = 1.7.0 / 2019-10-23 =
 * ✔︎ Compatibility WP 5.3
 * ✔︎ Compatibility WOO 3.8
@@ -86,75 +89,4 @@ The GIT repository is available here [https://github.com/rvola/woo-cancel-abando
 * Escape i18n html
 * DELETED / Restock option / WooCommerce the management since June 2018 ...
 
-= 1.6.1 / 2019-06-04 =
-* FIX / Incorrect date format with time cancellation.
-
-= 1.6.0 / 2019-05-07 =
-* NEW / Order status hook for the cancel process.
-* MINOR / code style call Class external.
-
-= 1.5.1 / 2019-04-03 =
-* ✔︎ Compatibility WP 5.2
-* ✔︎ Compatibility WOO 3.6
-
-= 1.5.0 / 2018-10-22 =
-* NEW / Filter 'woo_cao_date_order'. Change the calculation date for pending orders.
-* ✔︎ Compatibility WP 5.0
-* CHECK / End of support PHP 5.6 http://php.net/supported-versions.php
-* USELESS / Options 'value' in field checkbox.
-
-= 1.4.1 / 2018-10-03 =
-* UPDATED / Rename file updater
-* FIX / Updater crash with older PHP < 7.0
-
-= 1.4.0 / 2018-10-02 =
-* NEW / Class Updater for modifications
-* NEW / The plugin can work in hours
-* NEW / Method 'required' for class WP
-* UPDATED / Explain in admin for restock
-* NEW / Load assets by file
-* ✔︎ Compatibility WooCommerce 3.5
-
-= 1.3.1 / 2018-05-23 =
-* ✔︎ Compatibility WooCommerce 3.4
-
-= 1.3.0 / 2018-03-01 =
-* NEW restock
-* NEW hook do_action ‘woo_cao_cancel_order’
-* NEW method ‘cancel_order’
-* Rename var ‘orders_id’ by’ ‘orders’
-* Rename method ‘cancel_order’ by ‘check_order’
-* Delete notice deprecated hook
-* Refactor class
-* Refactor new instance
-* Changelog WP
-
-= 1.2.1 / 2018-02-24 =
-* Rename class + namespace
-* Update change methode ‘load’ > ‘intance'
-* FIX / plugin_row_meta (class in includes)
-* MINOR / delete link github plugin_row_meta
-* MINOR / update readme
-
-= 1.2.0 / 2018-02-22 =
-* Deprecated hook 'woo_cao-gateways' by 'woo_cao_gateways'
-* Deprecated hook 'woo_cao-default_days' by 'woo_cao_default_days'
-* Wordpress conventions
-* Move Class in includes
-
-= 1.1.3 / 2018-01-31 =
-* ✔︎ Compatibility WooCommerce 3.3.0
-
-= 1.1.2 / 2017-10-30 =
-* Fix translate domain WP (folder)
-
-= 1.1.1 / 2017-10-30 =
-* Fix translate domain WP
-
-= 1.1.0 / 2017-10-30 =
-* Add extension licence files
-* Rename path plugin (WP)
-* Move additional link (plugin_row_meta)
-
-= 1.0.0 / 2017-10-29 =
-* Launch
+[_More changelog_](https://github.com/rvola/woo-cancel-abandoned-order/blob/master/CHANGELOG.md).

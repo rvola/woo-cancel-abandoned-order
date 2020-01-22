@@ -1,5 +1,10 @@
 # Changelog
 
+## [1.7.1](https://github.com/rvola/woo-cancel-abandoned-order/tree/1.7.1) - 2020-01-22
+[Full Changelog](https://github.com/rvola/woo-cancel-abandoned-order/compare/1.7.0...1.7.1)
+
+* ✔︎ Compatibility WOO 3.8
+
 ## [1.7.0](https://github.com/rvola/woo-cancel-abandoned-order/tree/1.7.0) - 2019-10-23
 [Full Changelog](https://github.com/rvola/woo-cancel-abandoned-order/compare/1.6.1...1.7.0)
 
