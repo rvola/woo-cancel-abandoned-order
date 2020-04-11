@@ -1,7 +1,7 @@
 # Changelog
 
 ## [1.8.0](https://github.com/rvola/woo-cancel-abandoned-order/tree/1.8.0) - 2020-04-11
-[Full Changelog](https://github.com/rvola/woo-cancel-abandoned-order/compare/1.8.0...1.7.2)
+[Full Changelog](https://github.com/rvola/woo-cancel-abandoned-order/compare/1.7.2...1.8.0)
 
 * NEW / Filter 'woo_cao_message_cancel_order' to modify the order note for cancellation. Useful if you use the filter 'woo_cao_before_cancel_order'
 * MOVE / filter #7 and rename clean + add WC_Order class in filter (more possibility)
