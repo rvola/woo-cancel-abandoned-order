@@ -80,6 +80,10 @@ The GIT repository is available here [https://github.com/rvola/woo-cancel-abando
 == Changelog ==
 
 = 1.8.0 / 2020-04-11 =
-* New filter just before cancellation. Send the order_id and the WC_Order if you wish not to cancel this order. Thanks to Pexle Chris @pexlechris for the pull request.
+* NEW / Filter 'woo_cao_message_cancel_order' to modify the order note for cancellation. Useful if you use the filter 'woo_cao_before_cancel_order'
+* MOVE / filter #7 and rename clean + add WC_Order class in filter (more possibility)
+* NEW / filter added by Pexle Chris before cancel order (#7)
+
+**Thanks to Pexle Chris**
 
 [_More changelog_](https://github.com/rvola/woo-cancel-abandoned-order/blob/master/CHANGELOG.md).
