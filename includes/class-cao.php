@@ -136,7 +136,10 @@ class CAO {
 					if ( $orders ) {
 						foreach ( $orders as $order ) {
 							// Cancel order.
-							$this->cancel_order( $order->ID );
+							$cancel_order_boolean = apply_filters( 'woo_cao_order_id', true, $order->ID ); //filter by Pexle Chris
+							if($cancel_order_boolean){
+								$this->cancel_order( $order->ID );
+							}
 						}
 						wp_cache_flush();
 					}
