@@ -1,5 +1,5 @@
 === WooCommerce Cancel Abandoned Order ===
-Contributors: rvola
+Contributors: rvola, pexlechris
 Donate link: https://www.paypal.me/rvola
 Tags: woocommerce, cancel, order, pending, on hold, gateway
 Requires PHP: 7.0
