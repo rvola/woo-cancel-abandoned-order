@@ -136,10 +136,7 @@ class CAO {
 					if ( $orders ) {
 						foreach ( $orders as $order ) {
 							// Cancel order.
-							$cancel_order_boolean = apply_filters( 'woo_cao_order_id', true, $order->ID ); //filter by Pexle Chris
-							if($cancel_order_boolean){
-								$this->cancel_order( $order->ID );
-							}
+							$this->cancel_order( $order->ID );
 						}
 						wp_cache_flush();
 					}
@@ -156,14 +153,19 @@ class CAO {
 	private function cancel_order( $order_id ) {
 		$order = new WC_Order( $order_id );
 
-		$message = $this->woocao_icon();
-		$message .= esc_html__( 'Cancellation of the order because payment not received at time.', 'woo-cancel-abandoned-order' );
+		if ( true === apply_filters( 'woo_cao_before_cancel_order', true, $order_id, $order ) ) {
 
-		$order->update_status(
-			'cancelled',
-			$message
-		);
-		do_action( 'woo_cao_cancel_order', $order_id );
+			$message = $this->woocao_icon();
+			$message .= esc_html__( 'Cancellation of the order because payment not received at time.', 'woo-cancel-abandoned-order' );
+
+			$order->update_status(
+				'cancelled',
+				$message
+			);
+			
+			do_action( 'woo_cao_cancel_order', $order_id );
+
+		}
 
 	}
 
