@@ -37,6 +37,8 @@ _Action_
 _Filters_
 
 * **woo_cao_gateways** : Adds a payment gateway for the control.
+* **woo_cao_before_cancel_order** : Before canceling the order, send the order_id and the WC_Order if you do not want to cancel this order. Expect an exact return of true.
+* **woo_cao_message_cancel_order** : Allows you to modify the note when canceling the order. Handy if you use the 'woo_cao_before_cancel_order' filter.
 * **woo_cao_date_order** ($old_date, $gateway, $mode) : Change the calculation date for pending orders.
 * **woo_cao_default_hours** : Default value of the number of hours for order processing.
 * **woo_cao_default_days** : Default value of the number of days for order processing.

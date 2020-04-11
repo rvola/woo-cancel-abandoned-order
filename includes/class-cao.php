@@ -153,14 +153,25 @@ class CAO {
 	private function cancel_order( $order_id ) {
 		$order = new WC_Order( $order_id );
 
-		$message = $this->woocao_icon();
-		$message .= esc_html__( 'Cancellation of the order because payment not received at time.', 'woo-cancel-abandoned-order' );
+		if ( true === apply_filters( 'woo_cao_before_cancel_order', true, $order_id, $order ) ) {
 
-		$order->update_status(
-			'cancelled',
-			$message
-		);
-		do_action( 'woo_cao_cancel_order', $order_id );
+			$icon           = $this->woocao_icon();
+			$message        = esc_html(
+				apply_filters(
+					'woo_cao_message_cancel_order',
+					esc_html__( 'Cancellation of the order because payment not received at time.', 'woo-cancel-abandoned-order' )
+				)
+			);
+			$message_woocap = $icon . $message;
+
+			$order->update_status(
+				'cancelled',
+				$message_woocap
+			);
+
+			do_action( 'woo_cao_cancel_order', $order_id );
+
+		}
 
 	}
 
@@ -201,7 +212,7 @@ class CAO {
 
 	/**
 	 * Return the icon for status messages.
-	 * 
+	 *
 	 * @return string
 	 */
 	private function woocao_icon() {
