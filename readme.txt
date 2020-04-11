@@ -5,7 +5,7 @@ Tags: woocommerce, cancel, order, pending, on hold, gateway
 Requires PHP: 7.0
 Requires at least: 4.0
 Tested up to: 5.4
-Stable tag: 1.7.2
+Stable tag: 1.8.0
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -45,11 +45,12 @@ _Action_
 _Filters_
 
 * **woo_cao_gateways** : Adds a payment gateway for the control.
+* **woo_cao_before_cancel_order** : Before canceling the order, send the order_id and the WC_Order if you do not want to cancel this order. Expect an exact return of true.
+* **woo_cao_message_cancel_order** : Allows you to modify the note when canceling the order. Handy if you use the 'woo_cao_before_cancel_order' filter.
 * **woo_cao_date_order** ($old_date, $gateway, $mode) : Change the calculation date for pending orders.
 * **woo_cao_default_hours** : Default value of the number of hours for order processing.
 * **woo_cao_default_days** : Default value of the number of days for order processing.
 * **woo_cao_statustocancel** ($status) : Allows you to add or change which WooCommerce order status the plugin should cancel.
-
 
 == Wiki ==
 * [A help section on the code is available here](https://github.com/rvola/woo-cancel-abandoned-order/wiki)
@@ -78,19 +79,7 @@ The GIT repository is available here [https://github.com/rvola/woo-cancel-abando
 
 == Changelog ==
 
-= 1.7.2 / 2020-03-09 =
-* ✔︎ Compatibility WOO 4.0
-* ✔︎ Compatibility WP 5.4
-
-= 1.7.1 / 2020-01-22 =
-* ✔︎ Compatibility WOO 3.9
-
-= 1.7.0 / 2019-10-23 =
-* ✔︎ Compatibility WP 5.3
-* ✔︎ Compatibility WOO 3.8
-* PHPDock missing
-* Added an icon in the order notes to identify the author (WOOCAO) - not retroactive
-* Escape i18n html
-* DELETED / Restock option / WooCommerce the management since June 2018 ...
+= 1.8.0 / 2020-04-11 =
+* New filter just before cancellation. Send the order_id and the WC_Order if you wish not to cancel this order. Thanks to Pexle Chris @pexlechris for the pull request.
 
 [_More changelog_](https://github.com/rvola/woo-cancel-abandoned-order/blob/master/CHANGELOG.md).

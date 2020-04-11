@@ -168,7 +168,7 @@ class CAO {
 				'cancelled',
 				$message_woocap
 			);
-			
+
 			do_action( 'woo_cao_cancel_order', $order_id );
 
 		}
@@ -212,7 +212,7 @@ class CAO {
 
 	/**
 	 * Return the icon for status messages.
-	 * 
+	 *
 	 * @return string
 	 */
 	private function woocao_icon() {
