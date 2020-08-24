@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.8.1](https://github.com/rvola/woo-cancel-abandoned-order/tree/1.8.1) - 2020-08-24
+[Full Changelog](https://github.com/rvola/woo-cancel-abandoned-order/compare/1.8.0...1.8.1)
+
+* ✔︎ Compatibility WOO 4.4
+* ✔︎ Compatibility WP 5.5
+
 ## [1.8.0](https://github.com/rvola/woo-cancel-abandoned-order/tree/1.8.0) - 2020-04-11
 [Full Changelog](https://github.com/rvola/woo-cancel-abandoned-order/compare/1.7.2...1.8.0)
 
