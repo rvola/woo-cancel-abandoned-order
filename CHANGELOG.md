@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.9.0](https://github.com/rvola/woo-cancel-abandoned-order/tree/1.9.0) - 2021-02-10
+[Full Changelog](https://github.com/rvola/woo-cancel-abandoned-order/compare/1.8.1...1.9.0)
+
+* ✔︎ Compatibility WOO 5.0
+* ✔︎ Compatibility WP 5.7
+* New / If the ActionScheduler extension exists (included in WooCommerce), use this library rather than wp-cron #11
+* Updated / Allow status to be saved in the WooCommerce universe with the WooCommerce filter 'wc_order_statuses' #9
+
 ## [1.8.1](https://github.com/rvola/woo-cancel-abandoned-order/tree/1.8.1) - 2020-08-24
 [Full Changelog](https://github.com/rvola/woo-cancel-abandoned-order/compare/1.8.0...1.8.1)
 
@@ -33,7 +41,6 @@
 * Added an icon in the order notes to identify the author (WOOCAO) - not retroactive
 * Escape i18n html
 * DELETED / Restock option / WooCommerce the management since June 2018 ...
-
 
 ## [1.6.1](https://github.com/rvola/woo-cancel-abandoned-order/tree/1.6.1) - 2019-06-04
 [Full Changelog](https://github.com/rvola/woo-cancel-abandoned-order/compare/1.6.0...1.6.1)
