@@ -65,10 +65,24 @@ class CAO {
 	 */
 	private function add_event_cron() {
 
-		if ( ! wp_next_scheduled( self::CRON_EVENT ) ) {
-			wp_schedule_event(
-				strtotime( 'yesterday 0 hours' ), 'hourly', self::CRON_EVENT
-			);
+		// Check if Action Scheduler exist
+		if ( function_exists( 'as_schedule_recurring_action' ) && function_exists( 'as_next_scheduled_action' ) ) {
+			if ( false === as_next_scheduled_action( self::CRON_EVENT ) ) {
+				wp_clear_scheduled_hook( self::CRON_EVENT );
+				as_schedule_recurring_action(
+					strtotime( 'yesterday 0 hour' ),
+					HOUR_IN_SECONDS,
+					self::CRON_EVENT
+				);
+			}
+		} else {
+			if ( ! wp_next_scheduled( self::CRON_EVENT ) ) {
+				wp_schedule_event(
+					strtotime( 'yesterday 0 hours' ),
+					'hourly',
+					self::CRON_EVENT
+				);
+			}
 		}
 		add_action( self::CRON_EVENT, array( $this, 'check_order' ), 10 );
 	}
