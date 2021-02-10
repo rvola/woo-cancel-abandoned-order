@@ -4,8 +4,8 @@ Donate link: https://www.paypal.me/rvola
 Tags: woocommerce, cancel, order, pending, on hold, gateway
 Requires PHP: 7.0
 Requires at least: 4.0
-Tested up to: 5.5
-Stable tag: 1.8.1
+Tested up to: 5.7
+Stable tag: 1.9.0
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -57,6 +57,10 @@ _Filters_
 
 == Frequently Asked Questions ==
 
+= Does this plugin use Action Scheduler =
+
+Yes we have started the migration to Action Scheduler (recurring action) since version 1.9.0
+
 = What does the plugin do? =
 
 Depending on the options defined in the payment gateway options page, the system will cancel orders whose payments have not been received.
@@ -70,6 +74,8 @@ The execution of the cleaning is done like this:
 Mode **"Hourly"**: every hour to 00 minutes
 Mode **"Daily"**: every day at 0:00
 
+*Since version 1.9.0, the action is no longer executed at XXh00. Refer to the "Scheduled Actions" tab of the "Status" page of WooCommerce.*
+
 = I would like to cancel orders pending payment =
 Follow the [tutorial here](https://github.com/rvola/woo-cancel-abandoned-order/wiki/Change-the-status-type-for-the-cancellation-process) to change the status of orders to cancel. By default the "on-hold" commands are canceled.
 
@@ -79,15 +85,4 @@ The GIT repository is available here [https://github.com/rvola/woo-cancel-abando
 
 == Changelog ==
 
-= 1.8.1 / 2020-08-24 =
-* ✔︎ Compatibility WOO 4.4
-* ✔︎ Compatibility WP 5.5
-
-= 1.8.0 / 2020-04-11 =
-* NEW / Filter 'woo_cao_message_cancel_order' to modify the order note for cancellation. Useful if you use the filter 'woo_cao_before_cancel_order'
-* MOVE / filter #7 and rename clean + add WC_Order class in filter (more possibility)
-* NEW / filter added by Pexle Chris before cancel order (#7)
-
-**Thanks to Pexle Chris**
-
-[_More changelog_](https://github.com/rvola/woo-cancel-abandoned-order/blob/master/CHANGELOG.md).
+[on GitHub](https://github.com/rvola/woo-cancel-abandoned-order/blob/master/CHANGELOG.md).
