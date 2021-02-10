@@ -115,6 +115,7 @@ class CAO {
 
 					// Status to cancel
 					$woo_status = $this->woo_status();
+					$woo_status = implode( "','", $woo_status );
 
 					$orders = $wpdb->get_results(
 						$wpdb->prepare(
@@ -182,21 +183,14 @@ class CAO {
 	 */
 	private function woo_status() {
 		$woo_status            = array();
-		$woo_status_authorized = array(
-			'pending',
-			'on-hold',
-			'processing',
-			'completed',
-			'refunded',
-			'failed'
-		);
+		$woo_status_authorized = wc_get_order_statuses();
 
-		$default_status = apply_filters( 'woo_cao_statustocancel', array( 'on-hold' ) );
+		$default_status = apply_filters( 'woo_cao_statustocancel', array( 'wc-on-hold' ) );
 
 		if ( $default_status && is_array( $default_status ) ) {
 			foreach ( $default_status as $status ) {
-				if ( in_array( $status, $woo_status_authorized ) ) {
-					$woo_status[] = sprintf( 'wc-%s', $status );
+				if ( array_key_exists( $status, $woo_status_authorized ) ) {
+					$woo_status[] = $status;
 				}
 			}
 		}
@@ -204,8 +198,6 @@ class CAO {
 		if ( empty( $woo_status ) ) {
 			$woo_status[] = 'wc-on-hold';
 		}
-
-		$woo_status = implode( "','", $woo_status );
 
 		return $woo_status;
 	}
