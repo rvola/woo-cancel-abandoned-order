@@ -49,6 +49,10 @@ _Filters_
 
 ## Frequently Asked Questions
 
+#### Does this plugin use Action Scheduler
+
+Yes we have started the migration to Action Scheduler (recurring action) since version 1.9.0
+
 #### What does the plugin do?
 
 Depending on the options defined in the payment gateway options page, the system will cancel orders whose payments have not been received.
@@ -62,9 +66,11 @@ The execution of the cleaning is done like this:
 Mode **"hourly"**: every hour to 00 minutes
 Mode **"Daily"**: every day at 0:00
 
+_Since version 1.9.0, the action is no longer executed at XXh00. Refer to the "Scheduled Actions" tab of the "Status" page of WooCommerce._
+
 #### I would like to cancel orders pending payment
 
-Follow the [tutorial here](https://github.com/rvola/woo-cancel-abandoned-order/wiki/Change-the-status-type-for-the-cancellation-process) to change the status of orders to cancel. By default the "on-hold" commands are canceled.
+Follow the [tutorial here](https://github.com/rvola/woo-cancel-abandoned-order/wiki/Change-the-status-type-for-the-cancellation-process) to change the status of orders to cancel. By default the "wc-on-hold" commands are canceled.
 
 ## Links
 
