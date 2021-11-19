@@ -1,13 +1,13 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: WooCommerce Cancel Abandoned Order - 1.9.X\n"
-"POT-Creation-Date: 2021-02-10 10:56+0100\n"
+"Project-Id-Version: WooCommerce Cancel Abandoned Order - 2.0.X\n"
+"POT-Creation-Date: 2021-11-19 10:58+0100\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language-Team: \n"
-"X-Generator: Poedit 2.2.4\n"
+"X-Generator: Poedit 2.4.2\n"
 "X-Poedit-KeywordsList: esc_html__\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Poedit-SourceCharset: UTF-8\n"
@@ -16,58 +16,59 @@ msgstr ""
 "Last-Translator: \n"
 "X-Poedit-SearchPath-0: .\n"
 
-#: includes/class-cao.php:177
+#: includes/class-cao.php:181
 msgid "Cancellation of the order because payment not received at time."
 msgstr ""
 
-#: includes/class-cao.php:225 includes/class-cao.php:240
+#: includes/class-cao.php:229 includes/class-cao.php:244
+#: includes/class-stripe.php:35
 msgid "WooCommerce Cancel Abandoned Order"
 msgstr ""
 
-#: includes/class-cao.php:246
+#: includes/class-cao.php:250 includes/class-stripe.php:89
 msgid "Enable/Disable"
 msgstr ""
 
-#: includes/class-cao.php:248 includes/class-cao.php:255
+#: includes/class-cao.php:252 includes/class-cao.php:259
 msgid "Activation the automatic cancellation of orders."
 msgstr ""
 
-#: includes/class-cao.php:250
+#: includes/class-cao.php:254 includes/class-stripe.php:91
 msgid "Enable this option to automatically cancel all \"on Hold\" orders that you have not received payment for."
 msgstr ""
 
-#: includes/class-cao.php:253
+#: includes/class-cao.php:257 includes/class-stripe.php:96
 msgid "Mode"
 msgstr ""
 
-#: includes/class-cao.php:258
+#: includes/class-cao.php:262 includes/class-stripe.php:100
 msgid "Hourly"
 msgstr ""
 
-#: includes/class-cao.php:259
+#: includes/class-cao.php:263 includes/class-stripe.php:101
 msgid "Daily"
 msgstr ""
 
-#: includes/class-cao.php:264
+#: includes/class-cao.php:268 includes/class-stripe.php:107
 msgid "Lifetime in hour"
 msgstr ""
 
-#: includes/class-cao.php:266
+#: includes/class-cao.php:270 includes/class-stripe.php:109
 msgid "Enter the number of hours (whole number) during which the system must consider a \"pending\" command as canceled."
 msgstr ""
 
-#: includes/class-cao.php:268 includes/class-cao.php:276
+#: includes/class-cao.php:272 includes/class-cao.php:280
 msgid "days"
 msgstr ""
 
-#: includes/class-cao.php:272
+#: includes/class-cao.php:276 includes/class-stripe.php:115
 msgid "Lifetime in days"
 msgstr ""
 
-#: includes/class-cao.php:274
+#: includes/class-cao.php:278 includes/class-stripe.php:117
 msgid "Enter the number of days that the system must consider a \"on Hold\" order as canceled."
 msgstr ""
 
-#: includes/class-wp.php:87
+#: includes/class-wp.php:88
 msgid "Donate"
 msgstr ""
