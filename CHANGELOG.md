@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.0.0](https://github.com/rvola/woo-cancel-abandoned-order/tree/2.0.0) - 2021-11-19
+[Full Changelog](https://github.com/rvola/woo-cancel-abandoned-order/compare/1.9.0...2.0.0)
+
+* New / Class Stripe - working basis for the next versions and to quickly fix the new version of Stripe with WOOCAO
+* ✔ Compatibility WOO 5.9
+* ✔ Compatibility WP 5.8
+
 ## [1.9.0](https://github.com/rvola/woo-cancel-abandoned-order/tree/1.9.0) - 2021-02-10
 [Full Changelog](https://github.com/rvola/woo-cancel-abandoned-order/compare/1.8.1...1.9.0)
 
