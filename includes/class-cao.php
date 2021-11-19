@@ -55,7 +55,11 @@ class CAO {
 		$this->gateways = apply_filters( 'woo_cao_gateways', $gateways_default );
 		if ( $this->gateways && is_array( $this->gateways ) ) {
 			foreach ( $this->gateways as $gateway ) {
-				add_filter( 'woocommerce_settings_api_form_fields_' . $gateway, array( $this, 'add_fields' ), 10, 1 );
+				if ( 'stripe' === $gateway && defined( 'WC_STRIPE_VERSION' ) && version_compare( WC_STRIPE_VERSION, '5.8.0', '>=' ) ) {
+					new Stripe();
+				} else {
+					add_filter( 'woocommerce_settings_api_form_fields_' . $gateway, array( $this, 'add_fields' ), 10, 1 );
+				}
 			}
 		}
 	}
