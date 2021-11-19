@@ -44,6 +44,7 @@ class WP {
 	 */
 	public function required() {
 		require_once dirname( __FILE__ ) . '/class-cao.php';
+		require_once dirname( __FILE__ ) . '/class-stripe.php';
 		require_once dirname( __FILE__ ) . '/class-updater.php';
 		include_once dirname( __FILE__ ) . '/update.php';
 	}
