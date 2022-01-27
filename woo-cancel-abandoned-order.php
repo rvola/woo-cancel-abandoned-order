@@ -16,11 +16,11 @@ Text Domain:		    woo-cancel-abandoned-order
 Domain Path:		    /languages
 
 Requires at least:      4.0
-Tested up to:           5.8
+Tested up to:           5.9
 Requires PHP:           7.0
 
 WC requires at least:   2.2
-WC tested up to:        5.9
+WC tested up to:        6.2
 
 License:                GNU General Public License v3.0
 License URI:            https://www.gnu.org/licenses/gpl-3.0.html
