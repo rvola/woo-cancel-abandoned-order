@@ -20,7 +20,7 @@ Tested up to:           6.0
 Requires PHP:           7.0
 
 WC requires at least:   2.2
-WC tested up to:        6.5
+WC tested up to:        7.0
 
 License:                GNU General Public License v3.0
 License URI:            https://www.gnu.org/licenses/gpl-3.0.html
