@@ -105,8 +105,6 @@ class CAO {
 	 */
 	public function check_order() {
 
-		global $wpdb;
-
 		if ( $this->gateways ) {
 			foreach ( $this->gateways as $gateway ) {
 				$options = get_option( 'woocommerce_' . $gateway . '_settings' );
@@ -133,25 +131,16 @@ class CAO {
 
 					// Status to cancel
 					$woo_status = $this->woo_status();
-					$woo_status = implode( "','", $woo_status );
 
-					$orders = $wpdb->get_results(
-						$wpdb->prepare(
-							"
-							SELECT posts.ID
-							FROM $wpdb->posts as posts
-							INNER JOIN $wpdb->postmeta as meta
-							ON posts.ID = meta.post_id
-							WHERE posts.post_type = 'shop_order'
-							AND posts.post_status IN ('$woo_status')
-							AND posts.post_date < %s
-							AND meta.meta_key = '_payment_method'
-							AND meta.meta_value = %s
-						",
-							$old_date_format,
-							$gateway
+					$orders = wc_get_orders(
+						array(
+								'limit'        => -1,
+								'status'       => $woo_status,
+								'date_created' => '<' . $old_date_format,
+								'payment_method' => $gateway,
 						)
 					);
+
 					if ( $orders ) {
 						foreach ( $orders as $order ) {
 							// Cancel order.

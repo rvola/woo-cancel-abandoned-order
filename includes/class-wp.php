@@ -33,6 +33,8 @@ class WP {
 		$this->load_languages();
 		add_filter( 'plugin_row_meta', array( $this, 'plugin_row_meta' ), 10, 2 );
 
+		add_action('before_woocommerce_init', array( $this, 'enable_woo_htop' ));
+
 		$this->required();
 
 		new CAO();
@@ -91,5 +93,16 @@ class WP {
 		}
 
 		return $plugin_meta;
+	}
+
+	/**
+	 * Enable Woo HPOS ( High-performance order storage )
+	 *
+	 * @return void
+	 */
+	public function enable_woo_htop() {
+		if ( class_exists( \Automattic\WooCommerce\Utilities\FeaturesUtil::class ) ) {
+			\Automattic\WooCommerce\Utilities\FeaturesUtil::declare_compatibility( 'custom_order_tables', __FILE__, true );
+		}
 	}
 }
