@@ -33,7 +33,7 @@ class WP {
 		$this->load_languages();
 		add_filter( 'plugin_row_meta', array( $this, 'plugin_row_meta' ), 10, 2 );
 
-		add_action('before_woocommerce_init', array( $this, 'enable_woo_htop' ));
+		add_action('before_woocommerce_init', array( $this, 'enable_woo_hpos' ));
 
 		$this->required();
 
@@ -100,7 +100,7 @@ class WP {
 	 *
 	 * @return void
 	 */
-	public function enable_woo_htop() {
+	public function enable_woo_hpos() {
 		if ( class_exists( \Automattic\WooCommerce\Utilities\FeaturesUtil::class ) ) {
 			\Automattic\WooCommerce\Utilities\FeaturesUtil::declare_compatibility( 'custom_order_tables', __FILE__, true );
 		}
