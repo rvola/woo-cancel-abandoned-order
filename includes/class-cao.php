@@ -215,7 +215,7 @@ class CAO {
 	 * @return string
 	 */
 	private function woocao_icon() {
-		return sprintf( '<span class="woocao-icon" title="%s"></span>', esc_html__( 'WooCommerce Cancel Abandoned Order', 'woo-cancel-abandoned-order' ) );
+		return sprintf( '<span class="woocao-icon" title="%s"></span>', esc_html__( 'Cancel Abandoned Order', 'woo-cancel-abandoned-order' ) );
 	}
 
 	/**
@@ -230,7 +230,7 @@ class CAO {
 
 		$new_fields = array(
 			'woocao'         => array(
-				'title'       => esc_html__( 'WooCommerce Cancel Abandoned Order', 'woo-cancel-abandoned-order' ),
+				'title'       => esc_html__( 'Cancel Abandoned Order', 'woo-cancel-abandoned-order' ),
 				'type'        => 'title',
 				'description' => '',
 				'default'     => '',

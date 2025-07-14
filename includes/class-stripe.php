@@ -32,7 +32,7 @@ class Stripe {
 	 * Display a message if the user is using Stripe
 	 */
 	public function messageNewStripe() {
-		printf( '<h2>%s</h2>', esc_html__( 'WooCommerce Cancel Abandoned Order', 'woo-cancel-abandoned-order' ) );
+		printf( '<h2>%s</h2>', esc_html__( 'Cancel Abandoned Order', 'woo-cancel-abandoned-order' ) );
 		printf(
 			__( 'We have moved the settings from WOOCAO to Stripe %s', 'woo-cancel-abandoned-order' ),
 			sprintf(
