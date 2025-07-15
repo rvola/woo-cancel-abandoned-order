@@ -30,7 +30,7 @@ class WP {
 	 */
 	public function __construct() {
 
-		$this->load_languages();
+		add_filter( 'init', array( $this, 'load_languages' ) );
 		add_filter( 'plugin_row_meta', array( $this, 'plugin_row_meta' ), 10, 2 );
 
 		$this->required();
