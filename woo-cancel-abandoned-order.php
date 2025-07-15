@@ -28,6 +28,8 @@ License URI:            https://www.gnu.org/licenses/gpl-3.0.html
 
 namespace RVOLA\WOO\CAO;
 
+use Automattic\WooCommerce\Utilities\FeaturesUtil;
+
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
@@ -44,3 +46,9 @@ if ( is_plugin_active( 'woocommerce/woocommerce.php' ) ) {
 	register_deactivation_hook( WOOCAO_FILE, array( __NAMESPACE__ . '\\CAO', 'clean_cron' ) );
 }
 
+// HPOS compatibility
+add_action( 'before_woocommerce_init', function () {
+	if ( class_exists( FeaturesUtil::class ) ) {
+		FeaturesUtil::declare_compatibility( 'custom_order_tables', __FILE__, true );
+	}
+} );
