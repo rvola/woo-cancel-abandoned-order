@@ -41,7 +41,7 @@ include_once ABSPATH . 'wp-admin/includes/plugin.php';
 if ( is_plugin_active( 'woocommerce/woocommerce.php' ) ) {
 
 	require_once dirname( WOOCAO_FILE ) . '/includes/class-wp.php';
-	add_action( 'wp_loaded', array( __NAMESPACE__ . '\\WP', 'instance' ), 10 );
+	add_action( 'wp_loaded', array( __NAMESPACE__ . '\\WP', 'instance' ) );
 
 	register_deactivation_hook( WOOCAO_FILE, array( __NAMESPACE__ . '\\CAO', 'clean_cron' ) );
 }
