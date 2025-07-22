@@ -67,14 +67,13 @@ class WP {
 	 * Load language files.
 	 */
 	public function load_languages() {
-
 		load_plugin_textdomain( 'woo-cancel-abandoned-order', false, plugin_basename( dirname( WOOCAO_FILE ) ) . '/languages' );
 	}
 
 	/**
 	 * Add links in the list of plugins.
 	 *
-	 * @param array  $plugin_meta An array of the plugin's metadata, including the version, author, author URI, and plugin URI.
+	 * @param array $plugin_meta An array of the plugin's metadata, including the version, author, author URI, and plugin URI.
 	 * @param string $plugin_file Path to the plugin file, relative to the plugins directory.
 	 *
 	 * @return mixed

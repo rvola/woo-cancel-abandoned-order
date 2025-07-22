@@ -24,7 +24,7 @@ class Stripe {
 	public function __construct() {
 		add_action( 'wc_stripe_gateway_admin_options_wrapper', array( $this, 'messageNewStripe' ) );
 		add_filter( 'woocommerce_settings_tabs_array', array( $this, 'addTab' ), 50, 1 );
-		add_action( 'woocommerce_settings_tabs_' . self::SLUG, array( $this, 'display' ));
+		add_action( 'woocommerce_settings_tabs_' . self::SLUG, array( $this, 'display' ) );
 		add_action( 'woocommerce_update_options_' . self::SLUG, array( $this, 'save' ) );
 	}
 
