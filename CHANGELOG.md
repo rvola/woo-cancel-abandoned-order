@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.1.0](https://github.com/rvola/woo-cancel-abandoned-order/tree/2.1.0) - 2025-07-15
+[Full Changelog](https://github.com/rvola/woo-cancel-abandoned-order/compare/2.0.0...2.1.0)
+
+* Remove trademark
+* HPOS Compatibility (by Radoš)
+
+
 ## [2.0.0](https://github.com/rvola/woo-cancel-abandoned-order/tree/2.0.0) - 2021-11-19
 [Full Changelog](https://github.com/rvola/woo-cancel-abandoned-order/compare/1.9.0...2.0.0)
 
