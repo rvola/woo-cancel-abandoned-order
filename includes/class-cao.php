@@ -36,7 +36,7 @@ class CAO {
 	 * CAO constructor.
 	 */
 	public function __construct() {
-		add_action( 'admin_enqueue_scripts', array( $this, 'assets' ), 10, 1 );
+		add_action( 'admin_enqueue_scripts', array( $this, 'assets' ));
 		$this->add_field_gateways();
 		$this->add_event_cron();
 	}
@@ -58,7 +58,7 @@ class CAO {
 				if ( 'stripe' === $gateway && defined( 'WC_STRIPE_VERSION' ) && version_compare( WC_STRIPE_VERSION, '5.8.0', '>=' ) ) {
 					new Stripe();
 				} else {
-					add_filter( 'woocommerce_settings_api_form_fields_' . $gateway, array( $this, 'add_fields' ), 10, 1 );
+					add_filter( 'woocommerce_settings_api_form_fields_' . $gateway, array( $this, 'add_fields' ) );
 				}
 			}
 		}
@@ -215,7 +215,7 @@ class CAO {
 	 * @return string
 	 */
 	private function woocao_icon() {
-		return sprintf( '<span class="woocao-icon" title="%s"></span>', esc_html__( 'WooCommerce Cancel Abandoned Order', 'woo-cancel-abandoned-order' ) );
+		return sprintf( '<span class="woocao-icon" title="%s"></span>', esc_html__( 'Cancel Abandoned Order', 'woo-cancel-abandoned-order' ) );
 	}
 
 	/**
@@ -230,7 +230,7 @@ class CAO {
 
 		$new_fields = array(
 			'woocao'         => array(
-				'title'       => esc_html__( 'WooCommerce Cancel Abandoned Order', 'woo-cancel-abandoned-order' ),
+				'title'       => esc_html__( 'Cancel Abandoned Order', 'woo-cancel-abandoned-order' ),
 				'type'        => 'title',
 				'description' => '',
 				'default'     => '',

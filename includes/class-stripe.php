@@ -22,23 +22,26 @@ class Stripe {
 	 * Stripe constructor
 	 */
 	public function __construct() {
-		add_action( 'wc_stripe_gateway_admin_options_wrapper', array( $this, 'messageNewStripe' ), 10 );
+		add_action( 'wc_stripe_gateway_admin_options_wrapper', array( $this, 'messageNewStripe' ) );
 		add_filter( 'woocommerce_settings_tabs_array', array( $this, 'addTab' ), 50, 1 );
-		add_action( 'woocommerce_settings_tabs_' . self::SLUG, array( $this, 'display' ), 10 );
-		add_action( 'woocommerce_update_options_' . self::SLUG, array( $this, 'save' ), 10 );
+		add_action( 'woocommerce_settings_tabs_' . self::SLUG, array( $this, 'display' ) );
+		add_action( 'woocommerce_update_options_' . self::SLUG, array( $this, 'save' ) );
 	}
 
 	/**
 	 * Display a message if the user is using Stripe
 	 */
 	public function messageNewStripe() {
-		printf( '<h2>%s</h2>', esc_html__( 'WooCommerce Cancel Abandoned Order', 'woo-cancel-abandoned-order' ) );
+		printf( '<h2>%s</h2>', esc_html__( 'Cancel Abandoned Order', 'woo-cancel-abandoned-order' ) );
 		printf(
-			__( 'We have moved the settings from WOOCAO to Stripe %s', 'woo-cancel-abandoned-order' ),
+			wp_kses_post(
+			/*translators:%s link To Stripe tab*/
+				__( 'We have moved the settings from WOOCAO to Stripe %s', 'woo-cancel-abandoned-order' )
+			),
 			sprintf(
 				'<a href="%s">%s</a>',
-				admin_url( 'admin.php' ) . '?page=wc-settings&tab=' . self::SLUG,
-				__( 'here', 'woo-cancel-abandoned-order' )
+				esc_url( admin_url( 'admin.php?page=wc-settings&tab=' . self::SLUG ) ),
+				esc_html__( 'here', 'woo-cancel-abandoned-order' )
 			)
 		);
 	}
@@ -51,7 +54,7 @@ class Stripe {
 	 * @return mixed
 	 */
 	public function addTab( $tabs ) {
-		$tabs[ self::SLUG ] = __( 'WOOCAO', 'woo-cancel-abandoned-order' );
+		$tabs[ self::SLUG ] = esc_html__( 'WOOCAO', 'woo-cancel-abandoned-order' );
 
 		return $tabs;
 	}
@@ -80,7 +83,7 @@ class Stripe {
 
 		return array(
 			'woocao_stripe'  => array(
-				'name'    => __( 'Stripe' ),
+				'name'    => esc_html__( 'Stripe', 'woo-cancel-abandoned-order' ),
 				'type'    => 'title',
 				'desc'    => '',
 				'default' => '',

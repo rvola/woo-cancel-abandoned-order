@@ -1,4 +1,4 @@
-# WooCommerce Cancel Abandoned Order 
+# Cancel Abandoned Order 
 [![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.me/rvola)
 
 Cancel "on hold" orders after a certain number of days or by hours
@@ -7,11 +7,11 @@ Cancel "on hold" orders after a certain number of days or by hours
 
 ## Description
 
-**WooCommerce Cancel Abandoned Order** allows you to add a small option that will take care of dealing with "abandoned" commands.
+**Cancel Abandoned Order** allows you to add a small option that will take care of dealing with "abandoned" commands.
 
 If you have check or transfer type orders for example, you will be able to set a maximum number of days or by hours to receive the payment.
 
-WooCommerce Cancel Abandoned Order, will take care of checking this and change the status of the order to "Cancel" if you have not received payment on time.
+Cancel Abandoned Order, will take care of checking this and change the status of the order to "Cancel" if you have not received payment on time.
 
 ## Installation
 

@@ -27,7 +27,7 @@ final class Updater {
 	 * Updater constructor.
 	 */
 	public function __construct() {
-		add_action( 'admin_init', array( $this, 'check_update' ), 10 );
+		add_action( 'admin_init', array( $this, 'check_update' ) );
 	}
 
 	/**
